@@ -3,355 +3,579 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Disha Gupta, ML Researcher</title>
+  <title>Disha Gupta — ML Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --black: #0d0d0d;
-      --white: #fafafa;
-      --gray-100: #f2f2f0;
-      --gray-200: #e4e4e0;
-      --gray-400: #9a9a94;
-      --gray-600: #5a5a54;
-      --gray-800: #242420;
-      --warm: #f7f6f3;
+      --ink:    #111318;
+      --ink-2:  #252b36;
+      --ink-3:  #434c5e;
+      --mid:    #7c8494;
+      --rule:   #d5d9e4;
+      --bg:     #f3f4f8;
+      --bg-2:   #e9ebf2;
+      --bg-3:   #dfe3ee;
+      --white:  #f8f9fc;
+      --dark:   #111318;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      background: var(--white);
-      color: var(--black);
-      line-height: 1.7;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ── TYPOGRAPHY ── */
-    h1 { font-size: clamp(2.8rem, 6vw, 5.5rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; font-family: 'Georgia', serif; }
-    h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.01em; font-family: 'Georgia', serif; }
-    h3 { font-size: 1.1rem; font-weight: 600; letter-spacing: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-    p  { font-size: 0.97rem; color: var(--gray-600); line-height: 1.8; }
-
-    .mono {
-      font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-      font-size: 0.8rem;
-      letter-spacing: 0.04em;
-    }
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--ink-3); }
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 1.4rem 4rem;
-      background: rgba(250,250,250,0.95);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--gray-200);
+      padding: 1.2rem 5vw;
+      background: rgba(243,244,248,0.88);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--rule);
     }
-    .nav-logo { font-weight: 700; font-size: 1.05rem; letter-spacing: 0.01em; font-family: 'Georgia', serif; }
-    .nav-links { display: flex; gap: 2.5rem; }
+    .nav-logo {
+      font-size: 0.9rem; font-weight: 600;
+      color: var(--ink); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; align-items: center; }
     .nav-links a {
-      text-decoration: none; color: var(--gray-400); font-size: 0.78rem;
-      font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      transition: color 0.2s;
+      font-size: 0.82rem; font-weight: 400;
+      color: var(--ink);
+      text-decoration: none; transition: opacity 0.2s;
     }
-    .nav-links a:hover { color: var(--black); }
+    .nav-links a:hover { opacity: 0.6; }
+    .nav-cta {
+      font-size: 0.82rem; font-weight: 500;
+      color: var(--ink);
+      border: 1px solid var(--rule); padding: 0.5rem 1.2rem;
+      text-decoration: none; transition: border-color 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { border-color: var(--ink); }
 
-    /* ── HERO ── */
+    /* ══════════════════════════════
+       HERO
+    ══════════════════════════════ */
     #hero {
       min-height: 100vh;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 420px;
       align-items: center;
-      padding: 8rem 4rem 4rem;
+      padding: 0 5vw;
+      padding-top: 5rem;
+      gap: 0;
       position: relative;
       overflow: hidden;
+      background: var(--white);
+      background-image: radial-gradient(circle, rgba(17,19,24,0.055) 1px, transparent 1px);
+      background-size: 30px 30px;
     }
 
-    .hero-text { position: relative; z-index: 2; }
-
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      border: 1px solid var(--black); padding: 0.35rem 0.85rem;
-      margin-bottom: 2rem; border-radius: 2px;
-    }
-    .hero-tag .dot {
-      width: 7px; height: 7px; border-radius: 50%; background: var(--black);
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.8); }
+    /* full-hero canvas */
+    .hero-canvas-bg {
+      position: absolute; inset: 0; opacity: 0.22; pointer-events: none; z-index: 0;
     }
 
-    .hero-name { margin-bottom: 1.5rem; }
+    .hero-left {
+      position: relative; z-index: 2;
+      padding-right: 5vw;
+    }
 
-    .hero-subtitle {
-      font-size: 1.1rem; color: var(--gray-600); margin-bottom: 2.5rem;
-      max-width: 480px; line-height: 1.7;
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .hero-eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--ink);
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+    .hero-eyebrow-text {
+      font-size: 0.82rem; font-weight: 400; color: var(--mid);
+    }
+
+    .hero-name {
+      font-size: clamp(3.8rem, 7.5vw, 7rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      margin-bottom: 2rem;
+      white-space: nowrap;
+    }
+
+    .hero-tagline {
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--ink-3);
+      line-height: 1.75;
+      max-width: 480px;
+      margin-bottom: 3rem;
     }
 
     .hero-stats {
-      display: flex; gap: 2.5rem; margin-bottom: 2.5rem;
-      padding: 1.5rem 0;
-      border-top: 1px solid var(--gray-200);
-      border-bottom: 1px solid var(--gray-200);
+      display: flex; gap: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--rule);
+      margin-bottom: 3rem;
     }
-    .stat-item { }
-    .stat-num { font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
-    .stat-label { font-size: 0.72rem; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.25rem; }
-
-    .hero-cta { display: flex; gap: 1rem; }
-    .btn {
-      padding: 0.8rem 2rem; font-size: 0.85rem; font-weight: 600;
-      text-decoration: none; letter-spacing: 0.02em; text-transform: uppercase;
-      transition: all 0.2s; cursor: pointer; border: none;
+    .stat-num {
+      font-size: 2rem; font-weight: 300;
+      letter-spacing: -0.04em; line-height: 1;
+      color: var(--ink);
     }
-    .btn-primary { background: var(--black); color: var(--white); }
-    .btn-primary:hover { background: var(--gray-800); }
-    .btn-outline { border: 1px solid var(--black); color: var(--black); background: transparent; }
-    .btn-outline:hover { background: var(--black); color: var(--white); }
-
-    /* ── NEURAL CANVAS ── */
-    #neural-canvas {
-      position: absolute; right: 0; top: 0;
-      width: 55%; height: 100%;
-      opacity: 0.08;
+    .stat-label {
+      font-size: 0.75rem; color: var(--mid);
+      margin-top: 0.3rem;
     }
 
-    .hero-right {
-      position: relative; z-index: 2;
-      display: flex; flex-direction: column; gap: 1rem; padding-left: 3rem;
+    .hero-actions { display: flex; gap: 1rem; align-items: center; }
+    .btn-fill {
+      display: inline-block; padding: 0.85rem 2rem;
+      background: var(--ink); color: var(--white);
+      font-size: 0.82rem; font-weight: 500;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .btn-fill:hover { opacity: 0.75; }
+    .btn-ghost {
+      display: inline-block; padding: 0.85rem 2rem;
+      border: 1px solid var(--rule); color: var(--ink-3);
+      font-size: 0.82rem; font-weight: 400;
+      text-decoration: none; transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+
+    /* ── HERO PHOTO PANEL ── */
+    .hero-photo-panel {
+      position: relative; z-index: 1;
+      height: 100vh;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-photo {
+      width: 100%;
+      height: 92%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(20%) contrast(1.05);
+      display: block;
+      position: relative; z-index: 1;
+    }
+    .hero-photo-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      background: linear-gradient(to right, var(--white) 0%, transparent 18%),
+                  linear-gradient(to top, var(--white) 0%, transparent 12%);
+      pointer-events: none;
     }
 
-    .code-card {
-      background: var(--black); color: var(--white);
-      padding: 1.5rem; border-radius: 4px;
-      font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.78rem;
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      background: var(--bg-3);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 0.9rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex; gap: 0;
+      animation: marquee 30s linear infinite;
+    }
+    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    .marquee-item {
+      font-size: 0.75rem; font-weight: 500;
+      color: var(--mid);
+      padding: 0 2.5rem;
+    }
+    .marquee-item span { color: var(--ink-2); }
+
+    /* ══════════════════════════════
+       SECTIONS — BASE
+    ══════════════════════════════ */
+    .section { padding: 8rem 5vw; position: relative; }
+    .section-alt { background: var(--bg-2); }
+
+    .section-label {
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--mid); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300; letter-spacing: -0.03em;
+      line-height: 1.1; color: var(--ink);
+      margin-bottom: 4rem;
+    }
+
+    /* ══════════════════════════════
+       ABOUT / INTRO STRIP
+    ══════════════════════════════ */
+    .intro-strip {
+      background: var(--bg-2);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 5rem 5vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .intro-block-label {
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--mid); margin-bottom: 0.75rem;
+    }
+    .intro-block-text {
+      font-size: 1.05rem; color: var(--ink-3); line-height: 1.75; font-weight: 400;
+    }
+    .intro-block-text strong { color: var(--ink); font-weight: 600; }
+
+    /* ══════════════════════════════
+       PUBLICATIONS
+    ══════════════════════════════ */
+    .pub-list { position: relative; z-index: 1; }
+
+    .pub-item {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr;
+      gap: 3rem;
+      padding: 3.5rem 0;
+      border-top: 1px solid var(--rule);
+      transition: background 0.25s, padding-left 0.25s;
+      cursor: default;
+    }
+    .pub-item:last-child { border-bottom: 1px solid var(--rule); }
+    .pub-item:hover { background: var(--bg-3); padding-left: 1rem; }
+
+    .pub-num {
+      font-size: 1.1rem; font-weight: 500;
+      color: var(--mid);
+      padding-top: 0.3rem;
+    }
+    .pub-venue {
+      font-size: 0.78rem;
+      color: var(--ink-3); margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+    .pub-title {
+      font-size: 1.2rem; font-weight: 500; line-height: 1.4;
+      letter-spacing: -0.01em; margin-bottom: 2rem;
+    }
+    .pub-stats { display: flex; gap: 2rem; }
+    .pub-stat-val {
+      font-size: 1.6rem; font-weight: 300; letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .pub-stat-label {
+      font-size: 0.72rem; color: var(--mid);
+      margin-top: 0.25rem;
+    }
+    .pub-abstract {
+      font-size: 0.95rem; color: var(--ink-3);
       line-height: 1.8;
     }
-    .code-comment { color: #666; }
-    .code-keyword { color: #ccc; }
-    .code-string { color: #aaa; }
-    .code-func { color: #fff; font-weight: 600; }
-    .code-num { color: #999; }
 
-    .model-metrics {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-      background: var(--gray-200); border: 1px solid var(--gray-200);
-    }
-    .metric-cell {
-      background: var(--white); padding: 1rem 1.2rem;
-    }
-    .metric-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); }
-    .metric-value { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.03em; margin-top: 0.2rem; }
-    .metric-sub { font-size: 0.7rem; color: var(--gray-400); }
-
-    /* ── SECTION ── */
-    section { padding: 6rem 4rem; }
-    section:nth-child(even) { background: var(--gray-100); }
-
-    .section-header {
-      display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3.5rem;
-    }
-    .section-num { font-size: 0.75rem; color: var(--gray-400); font-family: monospace; }
-    .section-line {
-      flex: 1; height: 1px; background: var(--gray-200); max-width: 60px;
+    /* ══════════════════════════════
+       RESEARCH PROJECTS
+    ══════════════════════════════ */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
     }
 
-    /* ── PUBLICATIONS ── */
-    .pub-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--gray-200); }
-
-    .pub-card {
-      background: var(--white); padding: 2.5rem;
-      transition: background 0.2s;
-      position: relative; overflow: hidden;
-    }
-    .pub-card:hover { background: var(--black); }
-    .pub-card:hover * { color: var(--white) !important; }
-    .pub-card:hover .pub-bar { background: var(--white); }
-    .pub-card:hover .pub-tag { border-color: var(--white); }
-
-    .pub-tag {
-      display: inline-block; border: 1px solid var(--black); padding: 0.2rem 0.6rem;
-      font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em;
-      margin-bottom: 1.2rem; font-weight: 600;
-    }
-    .pub-title { font-size: 1.2rem; font-weight: 700; line-height: 1.3; margin-bottom: 1rem; letter-spacing: -0.02em; }
-    .pub-abstract { font-size: 0.85rem; color: var(--gray-600); line-height: 1.7; margin-bottom: 1.5rem; }
-    .pub-bar { height: 2px; background: var(--black); margin-bottom: 1.5rem; }
-
-    .pub-metrics { display: flex; gap: 2rem; }
-    .pub-metric { }
-    .pub-metric-val { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.03em; }
-    .pub-metric-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); }
-
-    /* ── PROJECTS ── */
-    .project-list { display: grid; gap: 1px; background: var(--gray-200); }
-
-    .project-row {
+    .project-card {
       background: var(--white);
-      display: grid; grid-template-columns: 2fr 3fr 1.5fr;
-      align-items: start; padding: 2.5rem;
-      gap: 3rem; transition: background 0.2s; cursor: default;
+      padding: 2.75rem;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid transparent;
+      transition: background 0.25s, border-color 0.25s;
+      cursor: default;
     }
-    .project-row:hover { background: var(--black); }
-    .project-row:hover * { color: var(--white) !important; border-color: var(--white) !important; }
+    .project-card:hover { background: var(--bg-2); border-color: var(--rule); }
+    .pc-venue {
+      font-size: 0.78rem;
+      color: var(--ink-3); margin-bottom: 0.5rem; font-weight: 500;
+    }
+    .pc-name {
+      font-size: 1.3rem; font-weight: 500; letter-spacing: -0.02em;
+      line-height: 1.25; margin-bottom: 0.75rem;
+    }
+    .pc-period {
+      font-size: 0.75rem; color: var(--mid);
+      margin-bottom: 1.25rem;
+    }
+    .pc-desc {
+      font-size: 0.9rem; color: var(--ink-3);
+      line-height: 1.75; margin-bottom: 1.5rem;
+    }
+    .pc-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+    .pc-tag {
+      font-size: 0.72rem; padding: 0.2rem 0.55rem;
+      border: 1px solid var(--rule); color: var(--mid);
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .pc-tag.hi { border-color: var(--ink-3); color: var(--ink-2); font-weight: 600; }
 
-    .project-name { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
-    .project-period { font-size: 0.72rem; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em; }
-    .project-desc { font-size: 0.88rem; color: var(--gray-600); line-height: 1.7; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: flex-end; }
-    .tag {
-      font-size: 0.65rem; border: 1px solid var(--gray-200); padding: 0.2rem 0.6rem;
-      text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-600); font-weight: 500;
-    }
-    .tag-highlight { border-color: var(--black); color: var(--black); font-weight: 600; }
-
-    /* ── EXPERIENCE ── */
-    .exp-timeline { position: relative; }
-    .exp-timeline::before {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-      width: 1px; background: var(--gray-200);
-    }
+    /* ══════════════════════════════
+       EXPERIENCE
+    ══════════════════════════════ */
+    .exp-list { }
 
     .exp-item {
-      display: grid; grid-template-columns: 220px 1fr;
-      gap: 3rem; padding: 2.5rem 0 2.5rem 2.5rem;
-      border-bottom: 1px solid var(--gray-200);
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 4rem;
+      padding: 3rem 0;
+      border-top: 1px solid var(--rule);
+      transition: background 0.25s, padding-left 0.25s;
+      cursor: default;
     }
-    .exp-item:last-child { border-bottom: none; }
+    .exp-item:last-child { border-bottom: 1px solid var(--rule); }
+    .exp-item:hover { background: var(--bg-3); padding-left: 1.5rem; }
 
-    .exp-meta { }
-    .exp-period { font-size: 0.72rem; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
-    .exp-org {
-      font-size: 0.85rem; font-weight: 700; color: var(--black); text-decoration: none;
-      display: block; margin-bottom: 0.3rem;
-    }
-    .exp-type { font-size: 0.72rem; color: var(--gray-400); }
+    .exp-period { font-size: 0.75rem; color: var(--mid); margin-bottom: 0.5rem; }
+    .exp-org { font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; }
+    .exp-role { font-size: 0.82rem; color: var(--mid); }
 
-    .exp-content h3 { margin-bottom: 0.8rem; }
-    .exp-bullets { list-style: none; padding: 0; margin-top: 0.8rem; }
+    .exp-title { font-size: 1.1rem; font-weight: 500; margin-bottom: 1rem; }
+    .exp-bullets { list-style: none; }
     .exp-bullets li {
-      font-size: 0.88rem; color: var(--gray-600); line-height: 1.7;
-      padding-left: 1rem; position: relative; margin-bottom: 0.4rem;
+      font-size: 0.95rem; color: var(--ink-3);
+      line-height: 1.75; padding-left: 1.2rem;
+      position: relative; margin-bottom: 0.5rem;
     }
     .exp-bullets li::before {
-      content: '→'; position: absolute; left: 0; color: var(--black);
-      font-size: 0.75rem; top: 0.1rem;
+      content: ''; position: absolute; left: 0; top: 0.75em;
+      width: 5px; height: 1px; background: var(--mid);
     }
 
-    /* ── AWARDS ── */
-    .awards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--gray-200); }
-
-    .award-card {
-      background: var(--white); padding: 2rem;
-      transition: background 0.2s;
+    /* ══════════════════════════════
+       AWARDS
+    ══════════════════════════════ */
+    .award-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--rule);
+      align-items: center;
+      transition: background 0.25s, padding-left 0.25s;
+      cursor: default;
     }
-    .award-card:hover { background: var(--black); }
-    .award-card:hover * { color: var(--white) !important; }
+    .award-row:last-child { border-bottom: 1px solid var(--rule); }
+    .award-row:hover { background: var(--bg-2); padding-left: 1rem; }
 
-    .award-rank { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.06em; line-height: 1; margin-bottom: 0.5rem; }
-    .award-name { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.3rem; line-height: 1.3; }
-    .award-org { font-size: 0.75rem; color: var(--gray-400); }
-    .award-year { font-size: 0.7rem; color: var(--gray-400); font-family: monospace; }
+    .award-rank {
+      font-size: 2.2rem; font-weight: 300;
+      letter-spacing: -0.05em; line-height: 1;
+      color: var(--ink);
+    }
+    .award-name { font-size: 1rem; font-weight: 500; color: var(--ink); line-height: 1.4; }
+    .award-meta { font-size: 0.78rem; color: var(--mid); line-height: 1.6; text-align: right; }
 
-    /* ── IMPACT ── */
+    /* ══════════════════════════════
+       WOMENS HEALTH
+    ══════════════════════════════ */
     .impact-section {
-      background: var(--black) !important;
-      color: var(--white);
+      background: var(--bg-3);
+      padding: 8rem 5vw;
+      border-top: 1px solid var(--rule);
     }
-    .impact-section h2, .impact-section .section-num, .impact-section p { color: var(--white) !important; }
-    .impact-section .section-line { background: #333; }
 
-    .impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; margin-top: 1rem; }
-    .impact-item { }
-    .impact-num {
-      font-size: 3.5rem; font-weight: 800; letter-spacing: -0.06em; line-height: 1;
-      color: var(--white);
+    .impact-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      margin-bottom: 6rem;
+      align-items: end;
     }
-    .impact-label { font-size: 0.78rem; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.5rem; line-height: 1.5; }
+    .impact-intro {
+      font-size: 1.1rem; color: var(--ink-3);
+      line-height: 1.8; font-weight: 400;
+    }
+    .impact-intro strong { color: var(--ink); font-weight: 600; }
 
-    .impact-programs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #222; margin-top: 4rem; }
+    .impact-numbers {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+    }
+    .impact-stat-num {
+      font-size: 3.5rem; font-weight: 300; letter-spacing: -0.05em;
+      line-height: 1; color: var(--ink); margin-bottom: 0.4rem;
+    }
+    .impact-stat-label {
+      font-size: 0.78rem; color: var(--mid); line-height: 1.5;
+    }
+
+    .impact-programs {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+      border-top: 1px solid var(--rule);
+    }
     .impact-prog {
-      background: #111; padding: 2rem;
+      padding: 2.5rem 2.5rem 2.5rem 0;
+      border-right: 1px solid var(--rule);
+      transition: background 0.25s;
     }
-    .impact-prog-name { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
-    .impact-prog-desc { font-size: 0.83rem; color: #888; line-height: 1.7; }
-
-    /* ── ML SKILLS ── */
-    .skills-section { }
-    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-    .skill-group { }
-    .skill-group-title { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-400); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--gray-200); }
-    .skill-list { list-style: none; }
-    .skill-list li { font-size: 0.85rem; color: var(--gray-800); padding: 0.35rem 0; border-bottom: 1px solid var(--gray-100); font-weight: 500; }
-    .skill-list li:last-child { border-bottom: none; }
-
-    /* ── JOURNALISM ── */
-    .journalism-block {
-      display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start;
+    .impact-prog:last-child { border-right: none; padding-right: 0; padding-left: 2.5rem; }
+    .impact-prog:nth-child(2) { padding-left: 2.5rem; }
+    .impact-prog:hover { background: var(--bg-2); }
+    .impact-prog-icon {
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--mid); margin-bottom: 0.75rem;
     }
-    .journ-left { }
-    .journ-stat { margin-bottom: 2rem; }
-    .journ-stat-num { font-size: 3rem; font-weight: 800; letter-spacing: -0.05em; line-height: 1; }
-    .journ-stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-top: 0.25rem; }
-
-    .journ-right { }
-    .journ-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; letter-spacing: -0.02em; }
-    .journ-desc { font-size: 0.9rem; color: var(--gray-600); line-height: 1.8; margin-bottom: 1.5rem; }
-
-    /* ── CONTACT / FOOTER ── */
-    #contact {
-      background: var(--black) !important;
-      color: var(--white);
-      padding: 6rem 4rem;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    .impact-prog-name {
+      font-size: 1.25rem; font-weight: 500; color: var(--ink);
+      margin-bottom: 0.75rem; letter-spacing: -0.01em;
     }
-    #contact h2 { color: var(--white); }
-    #contact p { color: #888; }
-    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-link {
-      display: flex; align-items: center; gap: 1rem;
-      color: var(--white); text-decoration: none;
-      padding: 1rem; border: 1px solid #333;
-      font-size: 0.88rem; font-weight: 500;
-      transition: border-color 0.2s, background 0.2s;
+    .impact-prog-desc {
+      font-size: 0.9rem; color: var(--ink-3); line-height: 1.75;
     }
-    .contact-link:hover { border-color: var(--white); background: #111; }
-    .contact-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: #666; }
-    .contact-val { color: var(--white); }
+
+    /* ══════════════════════════════
+       SKILLS
+    ══════════════════════════════ */
+    .skills-section {
+      padding: 8rem 5vw;
+      background: var(--white);
+    }
+    .skills-cols { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; }
+    .skill-col-head {
+      font-size: 0.85rem; font-weight: 600;
+      color: var(--ink-2); padding-bottom: 1rem;
+      border-bottom: 1px solid var(--rule); margin-bottom: 1rem;
+    }
+    .skill-pill {
+      display: block; font-size: 0.9rem; color: var(--ink-2);
+      padding: 0.5rem 0; border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, padding-left 0.2s;
+      cursor: default;
+    }
+    .skill-pill:hover { border-color: var(--rule); padding-left: 0.5rem; }
+
+    /* ══════════════════════════════
+       JOURNALISM
+    ══════════════════════════════ */
+    .journ-stats {
+      display: flex; gap: 4rem;
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 4rem;
+    }
+    .journ-stat-num {
+      font-size: 2.5rem; font-weight: 300;
+      letter-spacing: -0.04em; color: var(--ink); line-height: 1;
+    }
+    .journ-stat-lbl {
+      font-size: 0.78rem; color: var(--mid); margin-top: 0.3rem;
+    }
+    .journ-body {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    }
+    .journ-text {
+      font-size: 1rem; color: var(--ink-3); line-height: 1.8; margin-bottom: 1.25rem;
+    }
+    .journ-pullquote {
+      border-left: 2px solid var(--ink); padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      font-size: 1.05rem; color: var(--ink-2); line-height: 1.7;
+      font-weight: 400;
+    }
+
+    /* ══════════════════════════════
+       CONTACT
+    ══════════════════════════════ */
+    .contact-section {
+      background: var(--bg-2);
+      border-top: 1px solid var(--rule);
+      padding: 8rem 5vw;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center;
+    }
+    .contact-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300; letter-spacing: -0.03em;
+      color: var(--ink); line-height: 1.1; margin-bottom: 1.5rem;
+    }
+    .contact-sub {
+      font-size: 1rem; color: var(--ink-3); line-height: 1.8; margin-bottom: 2.5rem;
+    }
+    .contact-btns { display: flex; gap: 1rem; }
+    .btn-white {
+      display: inline-block; padding: 0.85rem 2rem;
+      background: var(--ink); color: var(--white);
+      font-size: 0.82rem; font-weight: 500;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .btn-white:hover { opacity: 0.75; }
+    .btn-dark-ghost {
+      display: inline-block; padding: 0.85rem 2rem;
+      border: 1px solid var(--rule); color: var(--ink-3);
+      font-size: 0.82rem; font-weight: 400;
+      text-decoration: none; transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-dark-ghost:hover { border-color: var(--ink); color: var(--ink); }
+
+    .contact-row {
+      padding: 1.5rem 0; border-bottom: 1px solid var(--rule);
+      transition: padding-left 0.2s; cursor: default;
+    }
+    .contact-row:first-child { border-top: 1px solid var(--rule); }
+    .contact-row:hover { padding-left: 0.75rem; }
+    .contact-row-label {
+      font-size: 0.72rem; font-weight: 600;
+      color: var(--mid); margin-bottom: 0.35rem;
+    }
+    .contact-row-val { font-size: 0.95rem; color: var(--ink-3); }
+
     footer {
-      background: var(--black); border-top: 1px solid #222;
-      padding: 1.5rem 4rem;
+      background: var(--bg); border-top: 1px solid var(--rule);
+      padding: 1.5rem 5vw;
       display: flex; justify-content: space-between; align-items: center;
     }
-    footer p { color: #444; font-size: 0.75rem; }
+    footer p { font-size: 0.75rem; color: var(--mid); }
 
-    /* ── SCROLL ANIMATIONS ── */
-    .reveal {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* ══════════════════════════════
+       REVEAL
+    ══════════════════════════════ */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 1rem 2rem; }
-      .nav-links { display: none; }
-      #hero { grid-template-columns: 1fr; padding: 6rem 2rem 4rem; }
-      .hero-right { display: none; }
-      section { padding: 4rem 2rem; }
-      .pub-grid, .awards-grid { grid-template-columns: 1fr; }
-      .project-row { grid-template-columns: 1fr; gap: 1rem; }
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+    @media (max-width: 960px) {
+      nav { padding: 1rem 4vw; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      #hero { grid-template-columns: 1fr; padding-top: 6rem; }
+      .hero-photo-panel { height: 60vw; }
+      .hero-name { white-space: normal; font-size: clamp(3rem,10vw,5rem); }
+      .intro-strip { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pub-item { grid-template-columns: 60px 1fr; gap: 1.5rem; }
+      .pub-item .pub-right { display: none; }
+      .projects-grid { grid-template-columns: 1fr; }
       .exp-item { grid-template-columns: 1fr; gap: 1rem; }
-      .impact-grid { grid-template-columns: 1fr 1fr; }
+      .award-row { grid-template-columns: 80px 1fr; }
+      .award-meta { display: none; }
+      .impact-header { grid-template-columns: 1fr; gap: 3rem; }
       .impact-programs { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: 1fr 1fr; }
-      .journalism-block { grid-template-columns: 1fr; }
-      #contact { grid-template-columns: 1fr; }
+      .impact-prog { border-right: none; border-top: 1px solid var(--rule); padding: 2rem 0; }
+      .skills-cols { grid-template-columns: 1fr 1fr; }
+      .journ-body { grid-template-columns: 1fr; gap: 0; }
+      .journ-stats { flex-wrap: wrap; gap: 2rem; }
+      .contact-section { grid-template-columns: 1fr; gap: 4rem; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
@@ -360,167 +584,190 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">DG</div>
+  <div class="nav-logo">Disha Gupta</div>
   <div class="nav-links">
+    <a href="#publications">Papers</a>
     <a href="#research">Research</a>
-    <a href="#publications">Publications</a>
     <a href="#experience">Experience</a>
     <a href="#awards">Awards</a>
     <a href="#impact">Impact</a>
-    <a href="#contact">Contact</a>
+    <a href="#contact" class="nav-cta">Contact</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-text">
-    <div class="hero-tag">
-      <span class="dot"></span>
-      <span class="mono">ML Researcher · Caltech, Computer Science</span>
+  <canvas id="hero-canvas" class="hero-canvas-bg"></canvas>
+
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-dot"></div>
+      <span class="hero-eyebrow-text">ML Researcher &nbsp;·&nbsp; Caltech Computer Science</span>
     </div>
 
-    <div class="hero-name">
-      <h1>Disha<br>Gupta</h1>
-    </div>
+    <h1 class="hero-name">Disha Gupta</h1>
 
-    <p class="hero-subtitle">
+    <p class="hero-tagline">
       Building machine learning systems that solve real clinical problems,
       from breast cancer diagnosis in underserved communities to
-      accelerating drug discovery with deep transformers.
+      accelerating cancer drug discovery with deep transformers.
     </p>
 
     <div class="hero-stats">
-      <div class="stat-item">
+      <div>
         <div class="stat-num" data-target="400000">0</div>
-        <div class="stat-label">Users Reached</div>
+        <div class="stat-label">Users reached</div>
       </div>
-      <div class="stat-item">
+      <div>
         <div class="stat-num" data-target="2">0</div>
         <div class="stat-label">Publications</div>
       </div>
-      <div class="stat-item">
+      <div>
         <div class="stat-num" data-target="2000">0</div>
-        <div class="stat-label">Women Supported</div>
+        <div class="stat-label">Women supported</div>
       </div>
-      <div class="stat-item">
+      <div>
         <div class="stat-num" data-target="95">0</div>
-        <div class="stat-label">Model Accuracy %</div>
+        <div class="stat-label">Model accuracy %</div>
       </div>
     </div>
 
-    <div class="hero-cta">
-      <a href="#publications" class="btn btn-primary">View Research</a>
-      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    <div class="hero-actions">
+      <a href="#publications" class="btn-fill">View Research</a>
+      <a href="#contact" class="btn-ghost">Get in Touch</a>
     </div>
   </div>
 
-  <canvas id="neural-canvas"></canvas>
-
-  <div class="hero-right">
-    <div class="code-card">
-      <div class="code-comment"># GliSM · SPIE 2025 · best model performance</div>
-      <div style="margin-top: 0.8rem;">
-        <span class="code-keyword">ensemble</span> = {<br>
-        &nbsp;&nbsp;<span class="code-string">"RMSE"</span>: <span class="code-num">0.601</span>,&nbsp;
-        <span class="code-string">"R²"</span>: <span class="code-num">0.786</span>,<br>
-        &nbsp;&nbsp;<span class="code-string">"compounds_screened"</span>: <span class="code-num">10_000_000</span>,<br>
-        &nbsp;&nbsp;<span class="code-string">"top_candidates"</span>: <span class="code-num">5</span><br>
-        }<br><br>
-        <span class="code-comment"># CancerDetect · IEEE · breast cancer AI</span><br>
-        <span class="code-keyword">best_model</span> = <span class="code-func">ResNet50_XGBoost</span>(<br>
-        &nbsp;&nbsp;augmentation=<span class="code-string">"stable_diffusion"</span>,<br>
-        &nbsp;&nbsp;test_accuracy=<span class="code-num">0.95</span>,<br>
-        &nbsp;&nbsp;inference_time=<span class="code-string">"5.87s"</span>&nbsp;<span class="code-comment"># vs 3min radiologist</span><br>
-        )
-      </div>
-    </div>
-
-    <div class="model-metrics">
-      <div class="metric-cell">
-        <div class="metric-label">Breast Cancer Model</div>
-        <div class="metric-value">95%</div>
-        <div class="metric-sub">Test accuracy · IEEE 2024</div>
-      </div>
-      <div class="metric-cell">
-        <div class="metric-label">Drug Discovery R²</div>
-        <div class="metric-value">0.786</div>
-        <div class="metric-sub">Ensemble · SPIE 2025</div>
-      </div>
-      <div class="metric-cell">
-        <div class="metric-label">Compounds Screened</div>
-        <div class="metric-value">10M</div>
-        <div class="metric-sub">PubChem10M dataset</div>
-      </div>
-      <div class="metric-cell">
-        <div class="metric-label">RISE Fellowship</div>
-        <div class="metric-value">1/100</div>
-        <div class="metric-sub">Selected from 50,000</div>
-      </div>
-    </div>
+  <div class="hero-photo-panel">
+    <img src="disha.jpg" alt="Disha Gupta" class="hero-photo" />
+    <div class="hero-photo-overlay"></div>
   </div>
 </section>
 
-<!-- PUBLICATIONS -->
-<section id="publications">
-  <div class="section-header reveal">
-    <span class="section-num mono">01</span>
-    <h2>Publications</h2>
-    <div class="section-line"></div>
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">IEEE Published</span>
+    <span class="marquee-item"><span>SPIE Published</span></span>
+    <span class="marquee-item">Stanford Pathology</span>
+    <span class="marquee-item"><span>RISE Fellow · 1/100</span></span>
+    <span class="marquee-item">ResNet50 + XGBoost</span>
+    <span class="marquee-item"><span>95% Accuracy</span></span>
+    <span class="marquee-item">ChemBERTa + PubChem10</span>
+    <span class="marquee-item"><span>10M Compounds</span></span>
+    <span class="marquee-item">EEG Neural Decoding</span>
+    <span class="marquee-item"><span>GANs + Stable Diffusion</span></span>
+    <span class="marquee-item">DevRev AI Research</span>
+    <span class="marquee-item"><span>Stanford AIMI</span></span>
+    <span class="marquee-item">Caltech CS '29</span>
+    <span class="marquee-item"><span>womens-health.ai</span></span>
+    <span class="marquee-item">Berkeley 1st Place</span>
+    <span class="marquee-item"><span>Harvard 1st Place</span></span>
+    <span class="marquee-item">IEEE Published</span>
+    <span class="marquee-item"><span>SPIE Published</span></span>
+    <span class="marquee-item">Stanford Pathology</span>
+    <span class="marquee-item"><span>RISE Fellow · 1/100</span></span>
+    <span class="marquee-item">ResNet50 + XGBoost</span>
+    <span class="marquee-item"><span>95% Accuracy</span></span>
+    <span class="marquee-item">ChemBERTa + PubChem10</span>
+    <span class="marquee-item"><span>10M Compounds</span></span>
+    <span class="marquee-item">EEG Neural Decoding</span>
+    <span class="marquee-item"><span>GANs + Stable Diffusion</span></span>
+    <span class="marquee-item">DevRev AI Research</span>
+    <span class="marquee-item"><span>Stanford AIMI</span></span>
+    <span class="marquee-item">Caltech CS '29</span>
+    <span class="marquee-item"><span>womens-health.ai</span></span>
+    <span class="marquee-item">Berkeley 1st Place</span>
+    <span class="marquee-item"><span>Harvard 1st Place</span></span>
   </div>
+</div>
 
-  <div class="pub-grid reveal">
-    <!-- SPIE -->
-    <div class="pub-card">
-      <div class="pub-tag">SPIE · Applications of Machine Learning 2025</div>
-      <div class="pub-title">Identifying Novel GLS-1 Inhibitors with Deep Transformer Models and 3D Docking Analysis to Accelerate Cancer Drug Discovery</div>
-      <div class="pub-bar" style="width: 80%;"></div>
-      <div class="pub-abstract">
-        Proposes a deep learning pipeline processing 10 million chEMBL compounds to identify GLS-1 inhibitors for aggressive cancers (glioblastoma, triple-negative breast cancer). Combines PubChem10 and ChemBERTa transformers with Random Forest and KNN in a hybrid ensemble approach, validated by AutoDockVina 3D molecular docking.
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="reveal">
+    <div class="intro-block-label">Background</div>
+    <div class="intro-block-text">
+      <strong>Incoming CS student at Caltech.</strong> Currently a paid research intern at the Stanford Department of Pathology and a published researcher in IEEE and SPIE. Building ML systems that save lives, not just hit benchmarks.
+    </div>
+  </div>
+  <div class="reveal reveal-d1">
+    <div class="intro-block-label">Focus</div>
+    <div class="intro-block-text">
+      Medical imaging, computational drug discovery, and brain-computer interfaces. Every project targets a real clinical gap — from breast cancer mortality in underserved communities to the $4B cost of bringing one drug to market.
+    </div>
+  </div>
+  <div class="reveal reveal-d2">
+    <div class="intro-block-label">Beyond Research</div>
+    <div class="intro-block-text">
+      Founder of <strong>womens-health.ai</strong>, a 501(c)(3) with 400K+ users. Editor-in-Chief of Humans of Harker leading 70+ journalists. <strong>RISE Fellow</strong> selected 1/100 from 50,000 global applicants.
+    </div>
+  </div>
+</div>
+
+<!-- PUBLICATIONS -->
+<section class="section section-alt" id="publications">
+  <div class="section-label reveal">Publications</div>
+  <h2 class="section-title reveal">Peer-reviewed publications</h2>
+
+  <div class="pub-list">
+    <div class="pub-item reveal">
+      <div class="pub-num">01</div>
+      <div class="pub-left">
+        <div class="pub-venue">SPIE · Applications of Machine Learning 2025</div>
+        <div class="pub-title">Identifying Novel GLS-1 Inhibitors with Deep Transformer Models and 3D Docking Analysis to Accelerate Cancer Drug Discovery</div>
+        <div class="pub-stats">
+          <div>
+            <div class="pub-stat-val">0.601</div>
+            <div class="pub-stat-label">RMSE</div>
+          </div>
+          <div>
+            <div class="pub-stat-val">0.786</div>
+            <div class="pub-stat-label">R²</div>
+          </div>
+          <div>
+            <div class="pub-stat-val">10M</div>
+            <div class="pub-stat-label">Compounds screened</div>
+          </div>
+          <div>
+            <div class="pub-stat-val">5</div>
+            <div class="pub-stat-label">Lead candidates</div>
+          </div>
+        </div>
       </div>
-      <div class="pub-metrics">
-        <div class="pub-metric">
-          <div class="pub-metric-val">0.601</div>
-          <div class="pub-metric-label">RMSE (Ensemble)</div>
-        </div>
-        <div class="pub-metric">
-          <div class="pub-metric-val">0.786</div>
-          <div class="pub-metric-label">R² Score</div>
-        </div>
-        <div class="pub-metric">
-          <div class="pub-metric-val">10M</div>
-          <div class="pub-metric-label">Compounds Screened</div>
-        </div>
-        <div class="pub-metric">
-          <div class="pub-metric-val">5</div>
-          <div class="pub-metric-label">Lead Candidates</div>
+      <div class="pub-right">
+        <div class="pub-abstract">
+          Proposes a deep learning pipeline that screens 10 million chEMBL compounds to identify GLS-1 inhibitors for aggressive cancers including glioblastoma, hepatocarcinoma, and triple-negative breast cancer. Combines PubChem10 and ChemBERTa transformer embeddings with Random Forest and KNN in a hybrid ensemble, validated by AutoDockVina 3D molecular docking. Reduces early drug discovery from 5-6 years of manual screening to a scalable, automated pipeline with best-in-class RMSE of 0.601.
         </div>
       </div>
     </div>
 
-    <!-- IEEE -->
-    <div class="pub-card">
-      <div class="pub-tag">IEEE · Institute of Electrical & Electronics Engineers</div>
-      <div class="pub-title">Reducing Global Breast Cancer Mortality with Early, Low-cost Diagnosis Using Generative AI and Hybrid DL Architecture</div>
-      <div class="pub-bar" style="width: 92%;"></div>
-      <div class="pub-abstract">
-        Addresses breast cancer mortality disparities (India 27%, Africa 60% vs. US 7%) by deploying generative AI on ultrasound infrastructure. Evaluates GAN, Stable Diffusion, and traditional augmentation across MobileNetV2 and ResNet50+XGBoost hybrid architectures. Validated against Indian radiologists. iOS app deployed for global clinical use.
+    <div class="pub-item reveal">
+      <div class="pub-num">02</div>
+      <div class="pub-left">
+        <div class="pub-venue">IEEE · Institute of Electrical & Electronics Engineers</div>
+        <div class="pub-title">Reducing Global Breast Cancer Mortality with Early, Low-cost Diagnosis Using Generative AI and Hybrid DL Architecture</div>
+        <div class="pub-stats">
+          <div>
+            <div class="pub-stat-val">95%</div>
+            <div class="pub-stat-label">Test accuracy</div>
+          </div>
+          <div>
+            <div class="pub-stat-val">5.87s</div>
+            <div class="pub-stat-label">Inference time</div>
+          </div>
+          <div>
+            <div class="pub-stat-val">100%</div>
+            <div class="pub-stat-label">vs. Radiologists</div>
+          </div>
+          <div>
+            <div class="pub-stat-val">iOS</div>
+            <div class="pub-stat-label">Deployed</div>
+          </div>
+        </div>
       </div>
-      <div class="pub-metrics">
-        <div class="pub-metric">
-          <div class="pub-metric-val">95%</div>
-          <div class="pub-metric-label">Test Accuracy</div>
-        </div>
-        <div class="pub-metric">
-          <div class="pub-metric-val">5.87s</div>
-          <div class="pub-metric-label">Inference Time</div>
-        </div>
-        <div class="pub-metric">
-          <div class="pub-metric-val">100%</div>
-          <div class="pub-metric-label">vs. Radiologists</div>
-        </div>
-        <div class="pub-metric">
-          <div class="pub-metric-val">iOS</div>
-          <div class="pub-metric-label">App Deployed</div>
+      <div class="pub-right">
+        <div class="pub-abstract">
+          Addresses breast cancer mortality disparities (India 27%, Africa 60% vs. US 7%) by deploying generative AI on existing ultrasound infrastructure. Evaluates GAN, Stable Diffusion, and traditional augmentation across MobileNetV2 and ResNet50 + XGBoost hybrid architectures. Validated by two Indian radiologists, the model achieved 100% accuracy vs. their 95% average, in 5.87 seconds vs. 3 minutes. iOS app deployed for real-time global clinical use.
         </div>
       </div>
     </div>
@@ -528,587 +775,483 @@
 </section>
 
 <!-- RESEARCH -->
-<section id="research">
-  <div class="section-header reveal">
-    <span class="section-num mono">02</span>
-    <h2>Research Projects</h2>
-    <div class="section-line"></div>
-  </div>
+<section class="section" id="research" style="background: var(--white);">
+  <div class="section-label reveal">Research Projects</div>
+  <h2 class="section-title reveal">Six active projects</h2>
 
-  <div class="project-list reveal">
-
-    <div class="project-row">
-      <div>
-        <div class="project-name">CancerDetect</div>
-        <div class="project-period">Jan 2023 – Present</div>
-      </div>
-      <div class="project-desc">
-        Generative AI-powered diagnostic system for early-stage breast cancer using ultrasound imaging. Combined GANs, Stable Diffusion, and hybrid deep learning (ResNet50 + XGBoost) to achieve 95% accuracy, matching experienced radiologists at 1/30th the time. Built and deployed an iOS app for frontline clinicians in low-resource settings.
-        <br><br><strong style="color:#000; font-size:0.8rem;">Published by IEEE · 1st Place Harvard Undergraduate Research Journal Competition</strong>
-      </div>
-      <div class="project-tags">
-        <span class="tag tag-highlight">IEEE Published</span>
-        <span class="tag">GANs</span>
-        <span class="tag">Stable Diffusion</span>
-        <span class="tag">ResNet50</span>
-        <span class="tag">XGBoost</span>
-        <span class="tag">iOS App</span>
+  <div class="projects-grid reveal">
+    <div class="project-card">
+      <div class="pc-venue">IEEE Published · Harvard 1st Place</div>
+      <div class="pc-name">CancerDetect</div>
+      <div class="pc-period">Jan 2023 – Present</div>
+      <div class="pc-desc">Generative AI system for early breast cancer diagnosis via ultrasound. GANs, Stable Diffusion, and ResNet50 + XGBoost achieved 95% accuracy, matching and exceeding radiologists. iOS app deployed globally for frontline clinicians.</div>
+      <div class="pc-tags">
+        <span class="pc-tag hi">IEEE</span>
+        <span class="pc-tag">GANs</span>
+        <span class="pc-tag">Stable Diffusion</span>
+        <span class="pc-tag">ResNet50</span>
+        <span class="pc-tag">XGBoost</span>
       </div>
     </div>
 
-    <div class="project-row">
-      <div>
-        <div class="project-name">GliSM</div>
-        <div class="project-period">Aug 2024 – Present</div>
-      </div>
-      <div class="project-desc">
-        Deep learning platform to identify novel GLS-1 inhibitors for aggressive cancers (glioblastoma, pancreatic cancer, triple-negative breast cancer). Screened 10M compounds using PubChem10 + ChemBERTa transformers with ensemble hybrid learning. Validated with AutoDockVina 3D docking. Reduces early-stage drug discovery from 5-6 years of manual screening.
-        <br><br><strong style="color:#000; font-size:0.8rem;">Published by SPIE · Grand Award Alternate Silicon Valley Synopsys Science Fair</strong>
-      </div>
-      <div class="project-tags">
-        <span class="tag tag-highlight">SPIE Published</span>
-        <span class="tag">PubChem10</span>
-        <span class="tag">ChemBERTa</span>
-        <span class="tag">AutoDockVina</span>
-        <span class="tag">Ensemble ML</span>
-        <span class="tag">Drug Discovery</span>
+    <div class="project-card">
+      <div class="pc-venue">SPIE Published · Synopsys Grand Alternate</div>
+      <div class="pc-name">GliSM</div>
+      <div class="pc-period">Aug 2024 – Present</div>
+      <div class="pc-desc">Deep learning platform to identify novel GLS-1 inhibitors for aggressive cancers. Screened 10M compounds via PubChem10 + ChemBERTa transformers. Validated with AutoDockVina 3D docking. Ensemble R² of 0.786.</div>
+      <div class="pc-tags">
+        <span class="pc-tag hi">SPIE</span>
+        <span class="pc-tag">PubChem10</span>
+        <span class="pc-tag">ChemBERTa</span>
+        <span class="pc-tag">AutoDockVina</span>
       </div>
     </div>
 
-    <div class="project-row">
-      <div>
-        <div class="project-name">NeuroLimb</div>
-        <div class="project-period">Oct 2024 – Present</div>
-      </div>
-      <div class="project-desc">
-        $350 3D-printed neuroprosthetic arm with 14 degrees of freedom, controlled by EEG-based neural decoding. Developed signal processing pipelines to extract user intent from noisy action potentials. Engineered algorithms to detect and classify changes in EEG patterns, translating cortical activity into precise real-time motor commands.
-        <br><br><strong style="color:#000; font-size:0.8rem;">1st Place UC Berkeley BioEngineering Competition (BioEHSC '25)</strong>
-      </div>
-      <div class="project-tags">
-        <span class="tag tag-highlight">1st Place Berkeley</span>
-        <span class="tag">EEG Decoding</span>
-        <span class="tag">Signal Processing</span>
-        <span class="tag">BCI</span>
-        <span class="tag">3D Printing</span>
+    <div class="project-card">
+      <div class="pc-venue">1st Place · UC Berkeley BioEHSC</div>
+      <div class="pc-name">NeuroLimb</div>
+      <div class="pc-period">Oct 2024 – Present</div>
+      <div class="pc-desc">$350 3D-printed neuroprosthetic arm with 14 degrees of freedom, controlled by EEG-based neural decoding. Signal processing pipelines extract user intent from noisy action potentials in real time.</div>
+      <div class="pc-tags">
+        <span class="pc-tag hi">Berkeley 1st</span>
+        <span class="pc-tag">EEG Decoding</span>
+        <span class="pc-tag">BCI</span>
+        <span class="pc-tag">Signal Processing</span>
       </div>
     </div>
 
-    <div class="project-row">
-      <div>
-        <div class="project-name">NeuroSpectrum</div>
-        <div class="project-period">Jul 2022 – Present</div>
-      </div>
-      <div class="project-desc">
-        Multimodal AI model for early detection of Autism Spectrum Disorder using fMRI and phenotypic data. Developed a cross-modal deep learning pipeline achieving high accuracy across public datasets. Targets critical developmental windows to enable earlier intervention and better outcomes for children.
-        <br><br><strong style="color:#000; font-size:0.8rem;">Top 300/65K Nationally · Thermo Fisher Junior Innovators · UCLA Brain Research Institute Award</strong>
-      </div>
-      <div class="project-tags">
-        <span class="tag">fMRI Analysis</span>
-        <span class="tag">Multimodal DL</span>
-        <span class="tag">ASD Detection</span>
-        <span class="tag">Cross-Modal</span>
+    <div class="project-card">
+      <div class="pc-venue">Top 300 / 65K · Thermo Fisher</div>
+      <div class="pc-name">NeuroSpectrum</div>
+      <div class="pc-period">Jul 2022 – Present</div>
+      <div class="pc-desc">Multimodal AI for early ASD detection using fMRI and phenotypic data. Cross-modal deep learning pipeline targeting critical developmental windows to enable earlier intervention.</div>
+      <div class="pc-tags">
+        <span class="pc-tag">fMRI</span>
+        <span class="pc-tag">Multimodal DL</span>
+        <span class="pc-tag">ASD Detection</span>
       </div>
     </div>
 
-    <div class="project-row">
-      <div>
-        <div class="project-name">Stanford Pathology<br>Peptide Discovery</div>
-        <div class="project-period">Jun 2025 – Present</div>
-      </div>
-      <div class="project-desc">
-        Custom neural network pipeline at the Butcher Lab, Stanford Department of Pathology, to discover novel bioactive peptide ligands within the human secretome. Sole high schooler on a 7-person cross-university team. Reports directly to Dr. Butcher (lab director).
-      </div>
-      <div class="project-tags">
-        <span class="tag tag-highlight">Stanford Lab</span>
-        <span class="tag">Neural Networks</span>
-        <span class="tag">Proteomics</span>
-        <span class="tag">Drug Discovery</span>
+    <div class="project-card">
+      <div class="pc-venue">Stanford Department of Pathology</div>
+      <div class="pc-name">Peptide Discovery</div>
+      <div class="pc-period">Jun 2025 – Present</div>
+      <div class="pc-desc">Custom neural network pipeline to discover novel bioactive peptide ligands within the human secretome. Sole high schooler on a 7-person cross-university team. Reports directly to Dr. Butcher.</div>
+      <div class="pc-tags">
+        <span class="pc-tag hi">Stanford</span>
+        <span class="pc-tag">Neural Networks</span>
+        <span class="pc-tag">Proteomics</span>
       </div>
     </div>
 
-    <div class="project-row">
-      <div>
-        <div class="project-name">CT → MRI Translation</div>
-        <div class="project-period">Summer 2022</div>
-      </div>
-      <div class="project-desc">
-        Image-to-image translation pipeline using Generative Adversarial Networks and U-Nets to convert CT scans into MRI equivalents. Built at UC Santa Cruz Science Internship Program. Focused on cross-modality translation to enhance diagnostic accessibility in resource-limited settings. One of the youngest participants in the cohort.
-      </div>
-      <div class="project-tags">
-        <span class="tag">GANs</span>
-        <span class="tag">U-Net</span>
-        <span class="tag">Medical Imaging</span>
-        <span class="tag">UCSC SIP</span>
+    <div class="project-card">
+      <div class="pc-venue">UC Santa Cruz SIP · 2022</div>
+      <div class="pc-name">CT to MRI Translation</div>
+      <div class="pc-period">Summer 2022</div>
+      <div class="pc-desc">GAN + U-Net image-to-image translation pipeline converting CT scans to MRI equivalents. Cross-modality translation to enhance diagnostic accessibility in resource-limited settings. One of the youngest SIP participants.</div>
+      <div class="pc-tags">
+        <span class="pc-tag">GANs</span>
+        <span class="pc-tag">U-Net</span>
+        <span class="pc-tag">Medical Imaging</span>
       </div>
     </div>
-
   </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-header reveal">
-    <span class="section-num mono">03</span>
-    <h2>Experience</h2>
-    <div class="section-line"></div>
-  </div>
+<section class="section section-alt" id="experience">
+  <div class="section-label reveal">Experience</div>
+  <h2 class="section-title reveal">Research & industry</h2>
 
-  <div class="exp-timeline reveal">
-
-    <div class="exp-item">
-      <div class="exp-meta">
+  <div class="exp-list">
+    <div class="exp-item reveal">
+      <div>
         <div class="exp-period">Jun 2025 – Present</div>
-        <span class="exp-org">Stanford Pathology · Butcher Lab</span>
-        <div class="exp-type">Paid Research Intern</div>
+        <div class="exp-org">Stanford Pathology</div>
+        <div class="exp-role">Paid Research Intern · Butcher Lab</div>
       </div>
-      <div class="exp-content">
-        <h3>Stanford Department of Pathology</h3>
+      <div>
+        <div class="exp-title">Bioactive Peptide Ligand Discovery</div>
         <ul class="exp-bullets">
           <li>Developing custom neural network pipeline to discover new bioactive peptide ligands within the human secretome.</li>
-          <li>Sole high schooler on a 7-person cross-university team. Reports directly to Dr. Butcher (lab director).</li>
+          <li>Sole high schooler on a 7-person cross-university team, reporting directly to Dr. Butcher (lab director).</li>
         </ul>
       </div>
     </div>
 
-    <div class="exp-item">
-      <div class="exp-meta">
+    <div class="exp-item reveal">
+      <div>
         <div class="exp-period">Jun 2025</div>
-        <span class="exp-org">Stanford AIMI Center</span>
-        <div class="exp-type">Research Intern</div>
+        <div class="exp-org">Stanford AIMI</div>
+        <div class="exp-role">Research Intern</div>
       </div>
-      <div class="exp-content">
-        <h3>Stanford Center for AI in Medicine & Imaging</h3>
+      <div>
+        <div class="exp-title">Low-res Chest X-ray Pneumonia Detection</div>
         <ul class="exp-bullets">
           <li>Developed custom architecture to diagnose pneumonia using low-res chest X-rays with improved model interpretability.</li>
-          <li>Invited to continue on extended research project.</li>
+          <li>Invited to work on extended research project following initial internship.</li>
         </ul>
       </div>
     </div>
 
-    <div class="exp-item">
-      <div class="exp-meta">
+    <div class="exp-item reveal">
+      <div>
         <div class="exp-period">Jun – Sep 2024</div>
-        <span class="exp-org">DevRev</span>
-        <div class="exp-type">AI Research Intern</div>
+        <div class="exp-org">DevRev</div>
+        <div class="exp-role">AI Research Intern</div>
       </div>
-      <div class="exp-content">
-        <h3>AI Research Intern</h3>
+      <div>
+        <div class="exp-title">LLM Fine-tuning & Product Growth</div>
         <ul class="exp-bullets">
-          <li>Fine-tuned and benchmarked large language models (LLMs) to reduce hallucinations and improve reliability in multi-step API chaining workflows.</li>
-          <li>Led and launched a monthly product newsletter delivered to over 13,000 users.</li>
+          <li>Fine-tuned and benchmarked LLMs to reduce hallucinations and improve reliability in multi-step API chaining workflows.</li>
+          <li>Led and launched a monthly product newsletter delivered to 13,000+ users.</li>
         </ul>
       </div>
     </div>
 
-    <div class="exp-item">
-      <div class="exp-meta">
+    <div class="exp-item reveal">
+      <div>
         <div class="exp-period">Aug 2021 – Present</div>
-        <span class="exp-org">womens-health.ai</span>
-        <div class="exp-type">Founder · 501(c)(3) Nonprofit</div>
+        <div class="exp-org">womens-health.ai</div>
+        <div class="exp-role">Founder · 501(c)(3) Nonprofit</div>
       </div>
-      <div class="exp-content">
-        <h3>Founder, Women's Health AI</h3>
+      <div>
+        <div class="exp-title">Breast Cancer Support Platform · 4 Countries</div>
         <ul class="exp-bullets">
           <li>Built genetic screening eligibility tool reaching 400,000+ users across Germany, Singapore, the US, and India.</li>
           <li>Developed free nutrition program with oncology nutritionists for breast cancer prevention and recovery.</li>
-          <li>Created video rehabilitation program with lymphedema therapist and surgical oncologist supporting 2,000+ women post-surgery.</li>
+          <li>Created rehabilitation program with a lymphedema therapist and surgical oncologist, supporting 2,000+ women post-surgery.</li>
         </ul>
       </div>
     </div>
 
-    <div class="exp-item">
-      <div class="exp-meta">
+    <div class="exp-item reveal">
+      <div>
         <div class="exp-period">Aug 2022 – Present</div>
-        <span class="exp-org">The Harker School</span>
-        <div class="exp-type">Editor-In-Chief</div>
+        <div class="exp-org">The Harker School</div>
+        <div class="exp-role">Editor-In-Chief</div>
       </div>
-      <div class="exp-content">
-        <h3>Editor-In-Chief, Humans of Harker</h3>
+      <div>
+        <div class="exp-title">Humans of Harker — Editorial Direction</div>
         <ul class="exp-bullets">
-          <li>Leads a team of 70+ journalists to produce Humans of Harker, a digital and print series profiling every graduating senior.</li>
-          <li>Oversees editorial direction, content strategy, and publication timelines for distribution to 3,000+ families.</li>
+          <li>Leads 70+ journalists to produce Humans of Harker, a digital and print series profiling every graduating senior.</li>
+          <li>Oversees editorial direction, content strategy, and publication timelines for 3,000+ families.</li>
         </ul>
       </div>
     </div>
 
-    <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-period">Aug 2023 – Present</div>
-        <span class="exp-org">STEM4All</span>
-        <div class="exp-type">Cofounder & President</div>
+    <div class="exp-item reveal">
+      <div>
+        <div class="exp-period">Summer 2022</div>
+        <div class="exp-org">UC Santa Cruz</div>
+        <div class="exp-role">Research Intern · SIP</div>
       </div>
-      <div class="exp-content">
-        <h3>STEM4All Tutoring Club Nonprofit</h3>
+      <div>
+        <div class="exp-title">GAN + U-Net CT-to-MRI Translation</div>
         <ul class="exp-bullets">
-          <li>Cofounded STEM4All, the Silicon Valley branch of the global StemE network, serving thousands of students worldwide.</li>
-          <li>Established partnerships with local middle schools; tutoring efforts reached 100+ students with 80+ participants per meeting.</li>
+          <li>Built GAN + U-Net CT-to-MRI translation pipeline. One of the youngest participants in the competitive SIP 2022 cohort.</li>
         </ul>
       </div>
     </div>
-
   </div>
 </section>
 
 <!-- AWARDS -->
-<section id="awards">
-  <div class="section-header reveal">
-    <span class="section-num mono">04</span>
-    <h2>Recognition</h2>
-    <div class="section-line"></div>
-  </div>
+<section class="section" id="awards" style="background: var(--white);">
+  <div class="section-label reveal">Recognition</div>
+  <h2 class="section-title reveal">Awards & recognition</h2>
 
-  <div class="awards-grid reveal">
-
-    <div class="award-card">
+  <div class="awards-list reveal">
+    <div class="award-row">
       <div class="award-rank">1/100</div>
-      <div class="award-name">RISE Global Fellow</div>
-      <div class="award-org">Schmidt Futures & Rhodes Trust</div>
-      <div class="award-year">Selected from 50,000 · 2024</div>
+      <div><div class="award-name">RISE Global Fellow</div></div>
+      <div class="award-meta">Schmidt Futures & Rhodes Trust<br>Selected from 50,000 applicants · 2024</div>
     </div>
-
-    <div class="award-card">
+    <div class="award-row">
       <div class="award-rank">#1</div>
-      <div class="award-name">International HOSA Creative Problem Solving</div>
-      <div class="award-org">Health Occupations Students of America</div>
-      <div class="award-year">1st Place · 2025</div>
+      <div><div class="award-name">International HOSA Creative Problem Solving</div></div>
+      <div class="award-meta">Health Occupations Students of America · 2025</div>
     </div>
-
-    <div class="award-card">
+    <div class="award-row">
       <div class="award-rank">Top 4</div>
-      <div class="award-name">Grand Prize Alternate, ISEF</div>
-      <div class="award-org">Silicon Valley Synopsys Science Fair</div>
-      <div class="award-year">4 chosen / 1,000 · 2025</div>
+      <div><div class="award-name">Grand Prize Alternate, ISEF</div></div>
+      <div class="award-meta">Silicon Valley Synopsys Science Fair<br>4 chosen from 1,000 · 2025</div>
     </div>
-
-    <div class="award-card">
+    <div class="award-row">
       <div class="award-rank">#1</div>
-      <div class="award-name">Berkeley BioEngineering Competition</div>
-      <div class="award-org">UC Berkeley BioEHSC</div>
-      <div class="award-year">1st Place · 2025</div>
+      <div><div class="award-name">UC Berkeley BioEngineering Competition</div></div>
+      <div class="award-meta">BioEHSC · 2025</div>
     </div>
-
-    <div class="award-card">
+    <div class="award-row">
       <div class="award-rank">#1</div>
-      <div class="award-name">Harvard Undergraduate Research Journal</div>
-      <div class="award-org">THURJ Competition</div>
-      <div class="award-year">1st Place · 2024</div>
+      <div><div class="award-name">Harvard Undergraduate Research Journal Competition</div></div>
+      <div class="award-meta">THURJ · 2024</div>
     </div>
-
-    <div class="award-card">
+    <div class="award-row">
       <div class="award-rank">#1</div>
-      <div class="award-name">Computational Biology</div>
-      <div class="award-org">Silicon Valley Synopsys Science Fair</div>
-      <div class="award-year">1st Place · 2025</div>
+      <div><div class="award-name">Computational Biology, Silicon Valley Synopsys</div></div>
+      <div class="award-meta">2025</div>
     </div>
-
-    <div class="award-card">
+    <div class="award-row">
       <div class="award-rank">#1</div>
-      <div class="award-name">Cal HOSA Medical Law & Ethics</div>
-      <div class="award-org">California HOSA</div>
-      <div class="award-year">1st Place · 2024 & 2025</div>
+      <div><div class="award-name">Cal HOSA Medical Law & Ethics</div></div>
+      <div class="award-meta">California HOSA · 2024 & 2025</div>
     </div>
-
-    <div class="award-card">
+    <div class="award-row">
       <div class="award-rank">Top 300</div>
-      <div class="award-name">Junior Innovators National Challenge</div>
-      <div class="award-org">Thermo Fisher Scientific</div>
-      <div class="award-year">Top 300 / 65,000 · 2022</div>
+      <div><div class="award-name">Thermo Fisher Junior Innovators National Challenge</div></div>
+      <div class="award-meta">Top 300 from 65,000 · 2022</div>
     </div>
-
-    <div class="award-card">
+    <div class="award-row">
       <div class="award-rank">#1</div>
-      <div class="award-name">UCLA Brain Research Institute Award</div>
-      <div class="award-org">California Science & Engineering Fair</div>
-      <div class="award-year">1st Place · 2022</div>
+      <div><div class="award-name">UCLA Brain Research Institute Award</div></div>
+      <div class="award-meta">California Science & Engineering Fair · 2022</div>
     </div>
-
   </div>
 </section>
 
-<!-- IMPACT (WomensHealthAI) -->
+<!-- WOMENS HEALTH AI -->
 <section id="impact" class="impact-section">
-  <div class="section-header reveal" style="border-bottom: 1px solid #222; padding-bottom: 2rem;">
-    <span class="section-num mono" style="color:#666;">05</span>
-    <h2 style="color:#fff;">Womens-Health.ai</h2>
-    <div class="section-line" style="background:#333;"></div>
-  </div>
+  <div class="section-label reveal">Women's Health AI</div>
+  <h2 class="section-title reveal">501(c)(3) nonprofit, 400K+ users</h2>
 
-  <p style="color:#888; font-size:1rem; max-width:600px; margin-bottom:3rem;" class="reveal">
-    Founded a 501(c)(3) nonprofit using AI to make breast cancer support accessible globally through
-    screening tools, evidence-based nutrition, and post-surgical rehabilitation programs developed
-    with leading oncologists and therapists.
-  </p>
-
-  <div class="impact-grid reveal">
-    <div class="impact-item">
-      <div class="impact-num">400K+</div>
-      <div class="impact-label">Users of Genetic<br>Screening Tool</div>
+  <div class="impact-header reveal">
+    <div class="impact-intro">
+      Founded <strong>womens-health.ai</strong> in 2021 as a 501(c)(3) nonprofit to make breast cancer support radically accessible. Built screening tools, evidence-based nutrition programs, and post-surgical rehabilitation programs with oncologists, nutritionists, and therapists. Now reaching women across four continents.
     </div>
-    <div class="impact-item">
-      <div class="impact-num">2,000+</div>
-      <div class="impact-label">Women Supported<br>Post-Surgery</div>
-    </div>
-    <div class="impact-item">
-      <div class="impact-num">4</div>
-      <div class="impact-label">Countries<br>US · Germany · India · Singapore</div>
-    </div>
-    <div class="impact-item">
-      <div class="impact-num">10</div>
-      <div class="impact-label">High-Need Patients<br>Free 1:1 Consultations</div>
+    <div class="impact-numbers">
+      <div class="impact-stat">
+        <div class="impact-stat-num" data-target="400000">0</div>
+        <div class="impact-stat-label">Users of screening tool</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-stat-num" data-target="2000">0</div>
+        <div class="impact-stat-label">Women supported post-surgery</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-stat-num" data-target="4">0</div>
+        <div class="impact-stat-label">Countries reached</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-stat-num" data-target="10">0</div>
+        <div class="impact-stat-label">Free 1:1 consultations</div>
+      </div>
     </div>
   </div>
 
   <div class="impact-programs reveal">
     <div class="impact-prog">
-      <div class="impact-prog-name">Screening</div>
-      <div class="impact-prog-desc">
-        Custom AI tool to determine eligibility for genetic breast cancer screening. Reached 400,000+ users across Germany, Singapore, the US, and India. Enables evidence-based decisions about BRCA testing access.
-      </div>
+      <div class="impact-prog-icon">Screening</div>
+      <div class="impact-prog-name">Genetic Risk Tool</div>
+      <div class="impact-prog-desc">Custom AI tool determining eligibility for genetic breast cancer screening. Reached 400,000+ users across Germany, Singapore, the US, and India.</div>
     </div>
     <div class="impact-prog">
-      <div class="impact-prog-name">Nutrition</div>
-      <div class="impact-prog-desc">
-        Free program developed with oncology nutritionists Caitlin Russell and Mickala Parsley for breast cancer prevention and recovery. Evidence-based dietary guidance accessible to all patients.
-      </div>
+      <div class="impact-prog-icon">Nutrition</div>
+      <div class="impact-prog-name">Oncology Nutrition Program</div>
+      <div class="impact-prog-desc">Free evidence-based nutrition program developed with oncology nutritionists Caitlin Russell and Mickala Parsley for breast cancer prevention and recovery.</div>
     </div>
     <div class="impact-prog">
-      <div class="impact-prog-name">Rehabilitation</div>
-      <div class="impact-prog-desc">
-        Video rehabilitation program developed with Lymphedema therapist Laurie Pepin and Surgical Oncologist Dr. Mandeep Singh. Helps women regain mobility after breast cancer surgery. 2,000+ supported, 10 personalized consultations for high-need patients.
-      </div>
+      <div class="impact-prog-icon">Rehabilitation</div>
+      <div class="impact-prog-name">Post-Surgery Recovery</div>
+      <div class="impact-prog-desc">Video rehab program with Lymphedema therapist Laurie Pepin and Surgical Oncologist Dr. Mandeep Singh. 2,000+ women supported in regaining mobility post-surgery.</div>
     </div>
   </div>
 </section>
 
-<!-- ML SKILLS -->
-<section id="skills">
-  <div class="section-header reveal">
-    <span class="section-num mono">06</span>
-    <h2>Technical Skills</h2>
-    <div class="section-line"></div>
-  </div>
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="section-label reveal">Technical Skills</div>
+  <h2 class="section-title reveal">Tools & frameworks</h2>
 
-  <div class="skills-grid reveal">
-    <div class="skill-group">
-      <div class="skill-group-title">Deep Learning</div>
-      <ul class="skill-list">
-        <li>Transformer Architectures</li>
-        <li>Convolutional Neural Nets</li>
-        <li>Generative Adversarial Networks</li>
-        <li>Stable Diffusion / DDPM</li>
-        <li>Transfer Learning</li>
-        <li>Ensemble Methods</li>
-        <li>U-Net / ResNet / MobileNet</li>
-      </ul>
+  <div class="skills-cols reveal">
+    <div>
+      <div class="skill-col-head">Deep learning</div>
+      <span class="skill-pill">Transformer Architectures</span>
+      <span class="skill-pill">Convolutional Neural Nets</span>
+      <span class="skill-pill">Generative Adversarial Networks</span>
+      <span class="skill-pill">Stable Diffusion / DDPM</span>
+      <span class="skill-pill">Transfer Learning</span>
+      <span class="skill-pill">Ensemble Methods</span>
+      <span class="skill-pill">ResNet / MobileNet / U-Net</span>
     </div>
-    <div class="skill-group">
-      <div class="skill-group-title">ML & Algorithms</div>
-      <ul class="skill-list">
-        <li>Random Forest / XGBoost</li>
-        <li>K-Nearest Neighbors</li>
-        <li>QSAR Modeling</li>
-        <li>Molecular Docking (AutoDockVina)</li>
-        <li>Hyperparameter Tuning</li>
-        <li>Cross-Validation</li>
-        <li>Signal Processing (EEG)</li>
-      </ul>
+    <div>
+      <div class="skill-col-head">ML & algorithms</div>
+      <span class="skill-pill">Random Forest / XGBoost</span>
+      <span class="skill-pill">K-Nearest Neighbors</span>
+      <span class="skill-pill">QSAR Modeling</span>
+      <span class="skill-pill">AutoDockVina (Molecular Docking)</span>
+      <span class="skill-pill">Hyperparameter Tuning</span>
+      <span class="skill-pill">Cross-Validation</span>
+      <span class="skill-pill">EEG Signal Processing</span>
     </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Domains</div>
-      <ul class="skill-list">
-        <li>Medical Imaging (Ultrasound, fMRI)</li>
-        <li>Computational Drug Discovery</li>
-        <li>Brain-Computer Interfaces</li>
-        <li>Cheminformatics (SMILES)</li>
-        <li>Large Language Models</li>
-        <li>Multimodal AI</li>
-        <li>iOS / Mobile Deployment</li>
-      </ul>
+    <div>
+      <div class="skill-col-head">Domains</div>
+      <span class="skill-pill">Medical Imaging (Ultrasound, fMRI)</span>
+      <span class="skill-pill">Computational Drug Discovery</span>
+      <span class="skill-pill">Brain-Computer Interfaces</span>
+      <span class="skill-pill">Cheminformatics (SMILES)</span>
+      <span class="skill-pill">Large Language Models</span>
+      <span class="skill-pill">Multimodal AI</span>
+      <span class="skill-pill">iOS / Mobile Deployment</span>
     </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Tools & Frameworks</div>
-      <ul class="skill-list">
-        <li>PyTorch / TensorFlow / Keras</li>
-        <li>UCSF Chimera / AutoDock</li>
-        <li>HuggingFace Transformers</li>
-        <li>scikit-learn / XGBoost</li>
-        <li>Python / Swift / C++</li>
-        <li>RoBERTa / PubChem10</li>
-        <li>ChemBERTa</li>
-      </ul>
+    <div>
+      <div class="skill-col-head">Tools & frameworks</div>
+      <span class="skill-pill">PyTorch / TensorFlow / Keras</span>
+      <span class="skill-pill">HuggingFace Transformers</span>
+      <span class="skill-pill">PubChem10 / ChemBERTa</span>
+      <span class="skill-pill">UCSF Chimera</span>
+      <span class="skill-pill">scikit-learn / XGBoost</span>
+      <span class="skill-pill">Python / Swift / C++</span>
+      <span class="skill-pill">RoBERTa</span>
     </div>
   </div>
 </section>
 
 <!-- JOURNALISM -->
-<section id="journalism">
-  <div class="section-header reveal">
-    <span class="section-num mono">07</span>
-    <h2>Journalism</h2>
-    <div class="section-line"></div>
+<section class="section section-alt" id="journalism">
+  <div class="section-label reveal">Journalism</div>
+  <h2 class="section-title reveal">Editor-in-Chief, Humans of Harker</h2>
+
+  <div class="journ-stats reveal">
+    <div>
+      <div class="journ-stat-num">70+</div>
+      <div class="journ-stat-lbl">Journalists led</div>
+    </div>
+    <div>
+      <div class="journ-stat-num">3K+</div>
+      <div class="journ-stat-lbl">Families reached</div>
+    </div>
+    <div>
+      <div class="journ-stat-num">3 yrs</div>
+      <div class="journ-stat-lbl">As Editor-in-Chief</div>
+    </div>
   </div>
 
-  <div class="journalism-block reveal">
-    <div class="journ-left">
-      <div class="journ-stat">
-        <div class="journ-stat-num">70+</div>
-        <div class="journ-stat-label">Journalists Led</div>
-      </div>
-      <div class="journ-stat">
-        <div class="journ-stat-num">3K+</div>
-        <div class="journ-stat-label">Families Reached</div>
-      </div>
-      <div class="journ-stat">
-        <div class="journ-stat-num">3yrs</div>
-        <div class="journ-stat-label">Aug 2022 – Present</div>
-      </div>
+  <div class="journ-body reveal">
+    <div>
+      <p class="journ-text">
+        Leading 70+ journalists to produce Humans of Harker, a celebrated digital and print series profiling every graduating senior at The Harker School. Oversees editorial direction, content strategy, and timelines for distribution to 3,000+ families.
+      </p>
+      <p class="journ-text">
+        This role demands the same rigor as research: coordinating distributed teams, maintaining quality under deadline, and distilling complex human stories into clear, lasting prose.
+      </p>
     </div>
-    <div class="journ-right">
-      <div class="journ-title">Editor-In-Chief, Humans of Harker</div>
-      <p class="journ-desc">
-        As Editor-In-Chief, leads a team of 70+ journalists to produce Humans of Harker, a celebrated digital and print series profiling every graduating senior at The Harker School. Oversees editorial direction, content strategy, and publication timelines for distribution to over 3,000 families annually. The series captures the stories of students across disciplines, building a rich community record of achievement and humanity.
-      </p>
-      <p class="journ-desc">
-        This role demands the same precision and systems thinking as research: coordinating distributed teams, maintaining rigorous editorial standards, meeting publication deadlines, and distilling complex human stories into clear, compelling prose.
-      </p>
+    <div>
+      <div class="journ-pullquote">
+        "The same precision that builds a machine learning pipeline applies to editorial work: systems, standards, and people moving toward a deadline."
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section class="contact-section" id="contact">
   <div>
-    <h2 style="color:#fff; margin-bottom: 1rem;">Let's connect.</h2>
-    <p style="color:#888; font-size: 1rem; margin-bottom: 2rem; line-height: 1.8;">
-      Open to research collaborations, internships, and opportunities at the intersection of machine learning and healthcare.
-    </p>
-    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-      <a href="mailto:DishaGupta830@gmail.com" class="btn btn-primary" style="background:#fff; color:#000;">Email Me</a>
-      <a href="https://www.womens-health.ai" class="btn btn-outline" style="border-color:#555; color:#aaa;">womens-health.ai</a>
+    <h2 class="contact-title">Let's build something that matters.</h2>
+    <p class="contact-sub">Open to research collaborations, internships, and conversations at the intersection of machine learning and healthcare.</p>
+    <div class="contact-btns">
+      <a href="mailto:DishaGupta830@gmail.com" class="btn-white">Email Me</a>
+      <a href="https://www.womens-health.ai" class="btn-dark-ghost">womens-health.ai</a>
     </div>
   </div>
-  <div class="contact-links">
-    <div class="contact-link">
-      <div>
-        <div class="contact-label">Email</div>
-        <div class="contact-val">DishaGupta830@gmail.com</div>
-      </div>
+  <div>
+    <div class="contact-row">
+      <div class="contact-row-label">Email</div>
+      <div class="contact-row-val">DishaGupta830@gmail.com</div>
     </div>
-    <div class="contact-link">
-      <div>
-        <div class="contact-label">School</div>
-        <div class="contact-val">The Harker School, San Jose · Class of '26</div>
-      </div>
+    <div class="contact-row">
+      <div class="contact-row-label">Institution</div>
+      <div class="contact-row-val">Caltech · Computer Science · Class of 2029</div>
     </div>
-    <div class="contact-link">
-      <div>
-        <div class="contact-label">SPIE Publication</div>
-        <div class="contact-val">Applications of Machine Learning 2025</div>
-      </div>
+    <div class="contact-row">
+      <div class="contact-row-label">SPIE Publication</div>
+      <div class="contact-row-val">Applications of Machine Learning 2025</div>
     </div>
-    <div class="contact-link">
-      <div>
-        <div class="contact-label">IEEE Publication</div>
-        <div class="contact-val">Institute of Electrical & Electronics Engineers</div>
-      </div>
+    <div class="contact-row">
+      <div class="contact-row-label">IEEE Publication</div>
+      <div class="contact-row-val">Institute of Electrical & Electronics Engineers</div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-row-label">Fellowship</div>
+      <div class="contact-row-val">RISE Fellow · Schmidt Futures & Rhodes Trust · 2024</div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p class="mono">© 2026 Disha Gupta · The Harker School</p>
-  <p class="mono">ML Researcher · IEEE · SPIE · RISE Fellow</p>
+  <p>Disha Gupta · Caltech CS '29</p>
+  <p>IEEE · SPIE · RISE Fellow · womens-health.ai</p>
 </footer>
 
-<!-- ── SCRIPTS ── -->
 <script>
-// ── NEURAL NETWORK CANVAS ──
-const canvas = document.getElementById('neural-canvas');
+// ── NEURAL CANVAS (full hero) ──
+const canvas = document.getElementById('hero-canvas');
 const ctx = canvas.getContext('2d');
-
-function resizeCanvas() {
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
+const hero = document.getElementById('hero');
+function resize() {
+  canvas.width = hero.offsetWidth;
+  canvas.height = hero.offsetHeight;
 }
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
+resize();
+window.addEventListener('resize', resize);
 
-const nodes = [];
-const edges = [];
-const NODE_COUNT = 55;
+const nodes = Array.from({length: 90}, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  vx: (Math.random() - .5) * .4,
+  vy: (Math.random() - .5) * .4,
+  r: Math.random() * 2.5 + 0.5,
+  pulse: Math.random() * Math.PI * 2
+}));
 
-function initNetwork() {
-  nodes.length = 0;
-  edges.length = 0;
-  for (let i = 0; i < NODE_COUNT; i++) {
-    nodes.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      r: Math.random() * 3 + 1.5
-    });
-  }
-}
-initNetwork();
-
-function drawNetwork() {
+function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const t = Date.now() * 0.001;
 
-  // Edges
+  // draw connections
   for (let i = 0; i < nodes.length; i++) {
     for (let j = i + 1; j < nodes.length; j++) {
       const dx = nodes[i].x - nodes[j].x;
       const dy = nodes[i].y - nodes[j].y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 130) {
+      const d = Math.sqrt(dx * dx + dy * dy);
+      if (d < 160) {
+        const alpha = (1 - d / 160) * 0.45;
         ctx.beginPath();
         ctx.moveTo(nodes[i].x, nodes[i].y);
         ctx.lineTo(nodes[j].x, nodes[j].y);
-        ctx.strokeStyle = `rgba(0,0,0,${(1 - dist/130) * 0.5})`;
+        ctx.strokeStyle = `rgba(17,19,24,${alpha})`;
         ctx.lineWidth = 0.7;
         ctx.stroke();
       }
     }
   }
 
-  // Nodes
-  nodes.forEach(node => {
+  // draw nodes
+  nodes.forEach(n => {
+    const pulsedR = n.r + Math.sin(t * 1.5 + n.pulse) * 0.5;
     ctx.beginPath();
-    ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(0,0,0,0.7)';
+    ctx.arc(n.x, n.y, pulsedR, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(17,19,24,0.65)';
     ctx.fill();
+    n.x += n.vx;
+    n.y += n.vy;
+    if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+    if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
   });
 
-  // Move
-  nodes.forEach(node => {
-    node.x += node.vx;
-    node.y += node.vy;
-    if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
-    if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
-  });
-
-  requestAnimationFrame(drawNetwork);
+  requestAnimationFrame(draw);
 }
-drawNetwork();
+draw();
 
-// ── COUNTER ANIMATION ──
-function animateCounter(el, target, duration = 1800) {
-  const isLarge = target >= 1000;
-  let start = null;
-  const step = (ts) => {
+// ── COUNTERS ──
+function animateCount(el, target, duration=1800) {
+  let start;
+  const fmt = v => target >= 10000 ? Math.round(v / 1000) + 'K+' : target >= 1000 ? v.toLocaleString() : Math.round(v).toString();
+  const step = ts => {
     if (!start) start = ts;
-    const progress = Math.min((ts - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const current = Math.floor(eased * target);
-    if (target >= 1000) {
-      el.textContent = current >= 1000
-        ? (current >= 10000 ? Math.floor(current/1000) + 'K+' : current.toLocaleString())
-        : current;
-    } else {
-      el.textContent = current;
-    }
-    if (progress < 1) requestAnimationFrame(step);
+    const p = Math.min((ts - start) / duration, 1), e = 1 - Math.pow(1 - p, 3);
+    el.textContent = fmt(e * target);
+    if (p < 1) requestAnimationFrame(step);
     else {
       if (target === 400000) el.textContent = '400K+';
       else if (target === 2000) el.textContent = '2,000+';
@@ -1117,47 +1260,21 @@ function animateCounter(el, target, duration = 1800) {
   };
   requestAnimationFrame(step);
 }
-
-const statsObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('[data-target]').forEach(el => {
-        animateCounter(el, parseInt(el.dataset.target));
-      });
-      statsObserver.unobserve(entry.target);
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('[data-target]').forEach(el => animateCount(el, +el.dataset.target));
+      counterObs.unobserve(e.target);
     }
   });
-}, { threshold: 0.3 });
+}, { threshold: .4 });
+document.querySelectorAll('.hero-stats,.impact-numbers').forEach(el => counterObs.observe(el));
 
-const heroStats = document.querySelector('.hero-stats');
-if (heroStats) statsObserver.observe(heroStats);
-
-// ── SCROLL REVEAL ──
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.08 });
-
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-// ── ACTIVE NAV ──
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 200) current = s.id;
-  });
-  navLinks.forEach(a => {
-    a.style.color = a.getAttribute('href') === '#' + current ? '#000' : '';
-  });
-});
+// ── REVEAL ──
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); } });
+}, { threshold: .08 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 </script>
-
 </body>
 </html>
