@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Disha Gupta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 13px;
+      line-height: 1.55;
+      color: #1a1a1a;
+      background: #fff;
+      max-width: 540px;
+      margin: 80px auto;
+      padding: 0 28px 120px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { color: #1a45b0; }
+
+    /* ── HEADER ── */
+    .header {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 44px;
+    }
+    .photo {
+      width: 82px; height: 82px;
+      border-radius: 50%;
+      object-fit: cover; object-position: center top;
+      flex-shrink: 0;
+    }
+    .name { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+    .bio { color: #555; margin-bottom: 10px; }
+    .header-links { display: flex; gap: 12px; }
+    .header-links a { font-size: 12px; }
+
+    /* ── ACCORDION ── */
+    details { border-top: 1px solid #ebebeb; }
+    details:last-of-type { border-bottom: 1px solid #ebebeb; }
+
+    summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 11px 0;
+      font-weight: 500;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '›';
+      font-size: 16px;
+      color: #bbb;
+      display: inline-block;
+      transition: transform 0.15s;
+      line-height: 1;
+    }
+    details[open] > summary::after { transform: rotate(90deg); }
+
+    .acc-body { padding: 2px 0 14px; }
+
+    /* each item — arrow bullet, no separator lines */
+    .item {
+      display: grid;
+      grid-template-columns: 14px 1fr;
+      gap: 0 8px;
+      padding: 6px 0;
+    }
+    .item-arrow { color: #ccc; padding-top: 1px; font-size: 12px; }
+    .item-content { }
+
+    .item-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0 6px;
+      margin-bottom: 2px;
+    }
+    .item-name { font-weight: 500; }
+    .item-role { color: #777; }
+    .item-date { color: #aaa; font-size: 12px; margin-left: auto; white-space: nowrap; padding-left: 8px; }
+    .item-desc { color: #555; margin-bottom: 4px; }
+    .item-links { display: flex; gap: 10px; font-size: 12px; }
+
+    /* ── PROJECT GRID ── */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 4px 0 2px;
+    }
+    .proj-card {
+      border: 1px solid #ebebeb;
+      border-radius: 6px;
+      padding: 12px 13px;
+      transition: border-color 0.15s;
+    }
+    .proj-card:hover { border-color: #bbb; }
+    .proj-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 3px;
+    }
+    .proj-card-name { font-weight: 500; font-size: 12.5px; }
+    .proj-card-lang {
+      display: flex; align-items: center; gap: 4px;
+      font-size: 11px; color: #aaa; flex-shrink: 0;
+    }
+    .proj-dot { width: 7px; height: 7px; border-radius: 50%; }
+    .proj-card-venue { font-size: 11.5px; color: #999; margin-bottom: 5px; }
+    .proj-card-desc { font-size: 12px; color: #555; line-height: 1.5; margin-bottom: 8px; }
+    .proj-card-links { display: flex; gap: 10px; font-size: 11.5px; }
+
+    /* ── AWARDS ── */
+    .award-item {
+      display: grid;
+      grid-template-columns: 14px 1fr;
+      gap: 0 8px;
+      padding: 6px 0;
+    }
+    .award-rank { font-weight: 500; font-size: 12px; color: #aaa; padding-top: 1px; }
+    .award-body { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+    .award-text { }
+    .award-name { font-size: 12.5px; color: #1a1a1a; }
+    .award-meta { font-size: 11.5px; color: #999; }
+    .award-proof { font-size: 11.5px; white-space: nowrap; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img src="disha.jpg" alt="Disha Gupta" class="photo" />
+    <div>
+      <div class="name">Disha Gupta</div>
+      <p class="bio">CS student at Caltech. Published in IEEE and SPIE. RISE Fellow.</p>
+      <div class="header-links">
+        <a href="mailto:DishaGupta830@gmail.com">email</a>
+        <!-- <a href="https://linkedin.com/in/YOUR_USERNAME">linkedin</a> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <details>
+    <summary>Education</summary>
+    <div class="acc-body">
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="item-head">
+            <span class="item-name">California Institute of Technology</span>
+            <span class="item-role">BS, Computer Science</span>
+            <span class="item-date">2026 – 2030</span>
+          </div>
+          <div class="item-desc">Studying computer science at Caltech.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="item-head">
+            <span class="item-name">The Harker School</span>
+            <span class="item-date">2022 – 2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- WORK EXPERIENCE -->
+  <details>
+    <summary>Work Experience</summary>
+    <div class="acc-body">
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="item-head">
+            <span class="item-name">Stanford Pathology, Butcher Lab</span>
+            <span class="item-role">Paid Research Intern</span>
+            <span class="item-date">Jun 2025 – Present</span>
+          </div>
+          <div class="item-desc">Building a custom neural network pipeline to discover novel bioactive peptide ligands within the human secretome. Sole high schooler on a 7-person cross-university team.</div>
+          <div class="item-links"><a href="https://github.com/26dishag/ChimeraPeptideView" target="_blank" rel="noopener">GitHub →</a></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="item-head">
+            <span class="item-name">womens-health.ai</span>
+            <span class="item-role">Founder, 501(c)(3)</span>
+            <span class="item-date">Aug 2021 – Present</span>
+          </div>
+          <div class="item-desc">Built a genetic screening tool and evidence-based recovery programs reaching 400,000+ users across four countries, developed with oncologists and lymphedema therapists.</div>
+          <div class="item-links">
+            <a href="https://womens-health.ai" target="_blank" rel="noopener">womens-health.ai →</a>
+            <a href="https://www.womens-health.ai/dishagupta" target="_blank" rel="noopener">Profile →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="item-head">
+            <span class="item-name">Stanford AIMI</span>
+            <span class="item-role">Research Intern</span>
+            <span class="item-date">Jun 2025</span>
+          </div>
+          <div class="item-desc">Developed a custom architecture to diagnose pneumonia from low-resolution chest X-rays. Invited back for an extended project after the internship.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="item-head">
+            <span class="item-name">DevRev</span>
+            <span class="item-role">AI Research Intern</span>
+            <span class="item-date">Jun – Sep 2024</span>
+          </div>
+          <div class="item-desc">Fine-tuned LLMs to reduce hallucinations in multi-step API chaining workflows. Launched a monthly product newsletter reaching 13,000+ users.</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="item-head">
+            <span class="item-name">UC Santa Cruz, SIP</span>
+            <span class="item-role">Research Intern</span>
+            <span class="item-date">Summer 2022</span>
+          </div>
+          <div class="item-desc">Built a GAN and U-Net pipeline converting CT scans to MRI equivalents to improve diagnostic access in resource-limited settings.</div>
+        </div>
+      </div>
+
+    </div>
+  </details>
+
+  <!-- PROJECTS -->
+  <details>
+    <summary>Projects</summary>
+    <div class="acc-body">
+      <div class="proj-grid">
+
+        <div class="proj-card">
+          <div class="proj-card-head">
+            <span class="proj-card-name">CancerDetect</span>
+            <span class="proj-card-lang"><span class="proj-dot" style="background:#3572A5"></span>Python</span>
+          </div>
+          <div class="proj-card-venue">IEEE · Harvard #1</div>
+          <div class="proj-card-desc">GANs + Stable Diffusion + ResNet50/XGBoost for breast cancer ultrasound diagnosis. 95% accuracy, exceeding radiologists. Running a clinical pilot at C.K. Birla Hospital, Delhi.</div>
+          <div class="proj-card-links">
+            <a href="https://github.com/26dishag/Breast-Cancer" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://ieeexplore.ieee.org/document/11050648/" target="_blank" rel="noopener">Paper</a>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-card-head">
+            <span class="proj-card-name">GliSM</span>
+          </div>
+          <div class="proj-card-venue">SPIE · Synopsys Grand Prize</div>
+          <div class="proj-card-desc">Deep learning to identify GLS-1 inhibitors for aggressive cancers. Screened 10M compounds via ChemBERTa + PubChem10M, validated with AutoDockVina 3D docking.</div>
+          <div class="proj-card-links">
+            <a href="https://doi.org/10.1117/12.3063516" target="_blank" rel="noopener">Paper</a>
+            <a href="https://news.harker.org/nearly-70-students-win-awards-at-2025-synopsys-championship/" target="_blank" rel="noopener">Synopsys</a>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-card-head">
+            <span class="proj-card-name">PhenoSynth</span>
+            <span class="proj-card-lang"><span class="proj-dot" style="background:#3572A5"></span>Python</span>
+          </div>
+          <div class="proj-card-venue">Rare Disease AI</div>
+          <div class="proj-card-desc">Graph-based AI for rare disease diagnosis over the Human Phenotype Ontology (17,000+ phenotypes). Generates synthetic profiles for ultra-rare conditions.</div>
+          <div class="proj-card-links">
+            <a href="https://github.com/26dishag/PhenoSynth" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-card-head">
+            <span class="proj-card-name">NeuroLimb</span>
+          </div>
+          <div class="proj-card-venue">Berkeley BioEngineering #1</div>
+          <div class="proj-card-desc">$350 3D-printed neuroprosthetic arm with 14 degrees of freedom, controlled via EEG-based neural decoding in real time.</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-card-head">
+            <span class="proj-card-name">INDAccelerator</span>
+            <span class="proj-card-lang"><span class="proj-dot" style="background:#e34c26"></span>HTML</span>
+          </div>
+          <div class="proj-card-venue">Drug Dev Automation</div>
+          <div class="proj-card-desc">AI-powered IND application document automation with intelligent scheduling, reducing overhead in the clinical drug development pipeline.</div>
+          <div class="proj-card-links">
+            <a href="https://github.com/26dishag/INDAccelerator" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-card-head">
+            <span class="proj-card-name">LitSearch</span>
+            <span class="proj-card-lang"><span class="proj-dot" style="background:#3572A5"></span>Python</span>
+          </div>
+          <div class="proj-card-venue">Stanford Butcher Lab</div>
+          <div class="proj-card-desc">Receptor-ligand literature search combining tiered PubMed evidence with Open Targets disease genetics and UniProt synonym expansion.</div>
+          <div class="proj-card-links">
+            <a href="https://github.com/26dishag/LitSearch" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-card-head">
+            <span class="proj-card-name">ChimeraPeptideView</span>
+            <span class="proj-card-lang"><span class="proj-dot" style="background:#3572A5"></span>Python</span>
+          </div>
+          <div class="proj-card-venue">Stanford Butcher Lab</div>
+          <div class="proj-card-desc">Visualize any gene and its predicted peptide ligands with binding metrics. Core visualization for the Butcher Lab discovery pipeline.</div>
+          <div class="proj-card-links">
+            <a href="https://github.com/26dishag/ChimeraPeptideView" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-card-head">
+            <span class="proj-card-name">NeuroSpectrum</span>
+          </div>
+          <div class="proj-card-venue">Thermo Fisher Top 300</div>
+          <div class="proj-card-desc">Multimodal AI for early ASD detection using fMRI and phenotypic data, targeting critical developmental windows for earlier intervention.</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-card-head">
+            <span class="proj-card-name">Cozique</span>
+            <span class="proj-card-lang"><span class="proj-dot" style="background:#3178c6"></span>TypeScript</span>
+          </div>
+          <div class="proj-card-venue">AI Matching App</div>
+          <div class="proj-card-desc">Curated small-group experiences with AI matching via Groq Llama 3.3. Application-based booking, mutual ratings, trust-tiered access. Next.js + Stripe.</div>
+          <div class="proj-card-links">
+            <a href="https://experience-app-sable.vercel.app" target="_blank" rel="noopener">Live →</a>
+            <a href="https://github.com/26dishag/ExperienceApp" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </details>
+
+  <!-- PUBLICATIONS -->
+  <details>
+    <summary>Publications</summary>
+    <div class="acc-body">
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="item-head">
+            <span class="item-name">SPIE Applications of Machine Learning, 2025</span>
+          </div>
+          <div class="item-desc">Identifying Novel GLS-1 Inhibitors with Deep Transformer Models and 3D Docking Analysis to Accelerate Cancer Drug Discovery. RMSE 0.601, R² 0.786, validated by AutoDockVina.</div>
+          <div class="item-links"><a href="https://doi.org/10.1117/12.3063516" target="_blank" rel="noopener">Read paper →</a></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="item-head">
+            <span class="item-name">IEEE Conference on Artificial Intelligence · Session Chair</span>
+          </div>
+          <div class="item-desc">Reducing Global Breast Cancer Mortality with Early, Low-cost Diagnosis Using Generative AI and Hybrid DL Architecture. 100% accuracy vs. radiologists' 95%, in 5.87s. Deployed as iOS app.</div>
+          <div class="item-links"><a href="https://ieeexplore.ieee.org/document/11050648/" target="_blank" rel="noopener">Read paper →</a></div>
+        </div>
+      </div>
+
+    </div>
+  </details>
+
+  <!-- AWARDS -->
+  <details>
+    <summary>Awards</summary>
+    <div class="acc-body">
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="award-body">
+            <div>
+              <div class="award-name">RISE Global Fellow &middot; <span style="color:#999;font-weight:400">1 of 100 &middot; Schmidt Futures & Rhodes Trust &middot; 2024</span></div>
+            </div>
+            <a class="award-proof" href="https://www.risefortheworld.org/winners/disha-gupta/" target="_blank" rel="noopener">proof →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="award-body">
+            <div><div class="award-name">International HOSA Creative Problem Solving &middot; <span style="color:#999;font-weight:400">#1 &middot; 2025</span></div></div>
+            <a class="award-proof" href="https://news.harker.org/rising-seniors-win-hosa-international-problem-solving-competition/" target="_blank" rel="noopener">proof →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="award-body">
+            <div><div class="award-name">Grand Prize Alternate, ISEF / Synopsys &middot; <span style="color:#999;font-weight:400">Top 4 of 1,000 &middot; 2025</span></div></div>
+            <a class="award-proof" href="https://news.harker.org/nearly-70-students-win-awards-at-2025-synopsys-championship/" target="_blank" rel="noopener">proof →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="award-body">
+            <div><div class="award-name">UC Berkeley BioEngineering Competition &middot; <span style="color:#999;font-weight:400">#1 &middot; BioEHSC &middot; 2025</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="award-body">
+            <div><div class="award-name">Harvard Undergraduate Research Journal &middot; <span style="color:#999;font-weight:400">#1 &middot; THURJ &middot; 2024</span></div></div>
+            <a class="award-proof" href="https://news.harker.org/harker-takes-three-of-five-top-spots-in-harvard-research-competition/" target="_blank" rel="noopener">proof →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="award-body">
+            <div><div class="award-name">Computational Biology, Silicon Valley Synopsys &middot; <span style="color:#999;font-weight:400">#1 &middot; 2025</span></div></div>
+            <a class="award-proof" href="https://news.harker.org/nearly-70-students-win-awards-at-2025-synopsys-championship/" target="_blank" rel="noopener">proof →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="award-body">
+            <div><div class="award-name">Cal HOSA Medical Law and Ethics &middot; <span style="color:#999;font-weight:400">#1 &middot; 2024 & 2025</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="award-body">
+            <div><div class="award-name">UCLA Brain Research Institute Award &middot; <span style="color:#999;font-weight:400">#1 &middot; CSEF &middot; 2022</span></div></div>
+            <a class="award-proof" href="https://bri.ucla.edu/outreach/state-and-county-science-fairs/" target="_blank" rel="noopener">proof →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-arrow">›</span>
+        <div class="item-content">
+          <div class="award-body">
+            <div><div class="award-name">Thermo Fisher Junior Innovators Challenge &middot; <span style="color:#999;font-weight:400">Top 300 of 65,000 &middot; 2022</span></div></div>
+            <a class="award-proof" href="https://news.harker.org/eight-students-named-broadcom-masters-top-300-scholars/" target="_blank" rel="noopener">proof →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </details>
+
+</body>
+</html>
