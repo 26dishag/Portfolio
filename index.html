@@ -44,18 +44,17 @@
       color: #111;
       margin-bottom: 6px;
     }
-    .bio { color: #888; margin-bottom: 11px; font-size: 12.5px; }
+    .bio { color: #333; margin-bottom: 11px; font-size: 12.5px; }
     .header-links { display: flex; gap: 14px; }
 
     /* ── ACCORDION ── */
-    details { border-top: 1px solid #ebebeb; }
-    details:last-of-type { border-bottom: 1px solid #ebebeb; }
+    details { margin-bottom: 4px; }
 
     summary {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 14px 0;
+      padding: 11px 0;
       font-size: 12.5px;
       font-weight: 600;
       letter-spacing: -0.015em;
@@ -63,39 +62,34 @@
       cursor: pointer;
       list-style: none;
       user-select: none;
-      transition: color 0.15s;
+      transition: opacity 0.15s;
     }
-    summary:hover { color: #555; }
-    details[open] > summary { color: #111; }
+    summary:hover { opacity: 0.6; }
     summary::-webkit-details-marker { display: none; }
 
-    .sum-left { display: flex; align-items: baseline; gap: 12px; }
+    .sum-left { display: flex; align-items: baseline; gap: 10px; }
     .sum-num {
       font-size: 10px;
-      color: #ccc;
+      color: #2563eb;
       font-variant-numeric: tabular-nums;
-      font-weight: 400;
-      letter-spacing: 0.05em;
+      font-weight: 500;
+      letter-spacing: 0.02em;
     }
 
     summary::after {
       content: '+';
       font-size: 15px;
       font-weight: 300;
-      color: #bbb;
-      transition: color 0.15s;
+      color: #111;
+      transition: opacity 0.15s;
       line-height: 1;
     }
-    details[open] > summary::after { content: '−'; color: #999; }
+    details[open] > summary::after { content: '−'; }
 
-    .acc-body { padding: 0 0 18px; }
+    .acc-body { padding: 0 0 14px; }
 
     /* ── ITEMS (education, work, publications) ── */
-    .item {
-      padding: 10px 0;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    .item:last-child { border-bottom: none; }
+    .item { padding: 8px 0; }
 
     .item-head {
       display: flex;
@@ -105,24 +99,20 @@
       margin-bottom: 4px;
     }
     .item-name { font-weight: 500; color: #111; }
-    .item-role { color: #999; }
+    .item-role { color: #333; }
     .item-date {
-      color: #ccc;
+      color: #2563eb;
       margin-left: auto;
       white-space: nowrap;
       padding-left: 8px;
       font-size: 11.5px;
       font-variant-numeric: tabular-nums;
     }
-    .item-desc { color: #777; margin-bottom: 6px; line-height: 1.7; font-size: 12px; }
+    .item-desc { color: #333; margin-bottom: 6px; line-height: 1.7; font-size: 12px; }
     .item-links { display: flex; gap: 12px; }
 
     /* ── PROJECTS ── flat list */
-    .proj-row {
-      padding: 10px 0;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    .proj-row:last-child { border-bottom: none; }
+    .proj-row { padding: 8px 0; }
     .proj-row-head {
       display: flex;
       align-items: baseline;
@@ -131,9 +121,9 @@
       margin-bottom: 4px;
     }
     .proj-name { font-weight: 500; color: #111; }
-    .proj-sep { color: #ddd; }
-    .proj-venue { color: #bbb; font-size: 11.5px; }
-    .proj-desc { color: #777; font-size: 12px; line-height: 1.7; margin-bottom: 5px; }
+    .proj-sep { color: #ccc; }
+    .proj-venue { color: #2563eb; font-size: 11.5px; }
+    .proj-desc { color: #333; font-size: 12px; line-height: 1.7; margin-bottom: 5px; }
     .proj-links { display: flex; gap: 12px; }
 
     /* ── AWARDS ── */
@@ -142,12 +132,10 @@
       justify-content: space-between;
       align-items: baseline;
       gap: 16px;
-      padding: 10px 0;
-      border-bottom: 1px solid #f0f0f0;
+      padding: 8px 0;
     }
-    .award-row:last-child { border-bottom: none; }
     .award-name { color: #111; }
-    .award-meta { color: #bbb; }
+    .award-meta { color: #333; }
     .award-proof { white-space: nowrap; flex-shrink: 0; font-size: 11px; }
   </style>
 </head>
