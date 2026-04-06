@@ -13,86 +13,77 @@
       font-family: 'Inter', -apple-system, sans-serif;
       font-size: 13px;
       line-height: 1.6;
-      color: #555;
+      color: #111;
       background: #fff;
       max-width: 560px;
-      margin: 110px auto;
+      margin: 100px auto;
       padding: 0 28px 120px;
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: #2563eb; text-decoration: none; transition: color 0.1s; }
-    a:hover { color: #1a45b0; }
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     /* ── HEADER ── */
     .header {
       display: flex;
       align-items: flex-start;
-      gap: 22px;
-      margin-bottom: 64px;
+      gap: 20px;
+      margin-bottom: 56px;
     }
     .photo {
-      width: 76px; height: 76px;
+      width: 72px; height: 72px;
       border-radius: 50%;
       object-fit: cover; object-position: center top;
       flex-shrink: 0;
     }
     .name {
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 600;
-      letter-spacing: -0.045em;
-      color: #111;
-      margin-bottom: 6px;
+      letter-spacing: -0.04em;
+      margin-bottom: 5px;
     }
-    .bio { color: #333; margin-bottom: 11px; font-size: 12.5px; }
+    .bio { color: #111; margin-bottom: 10px; font-size: 12.5px; }
     .header-links { display: flex; gap: 14px; }
 
     /* ── ACCORDION ── */
-    details { margin-bottom: 4px; }
+    details { margin-bottom: 2px; }
 
     summary {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 11px 0;
+      padding: 12px 0;
       font-size: 12.5px;
       font-weight: 600;
-      letter-spacing: -0.015em;
+      letter-spacing: -0.01em;
       color: #111;
       cursor: pointer;
       list-style: none;
       user-select: none;
-      transition: opacity 0.15s;
+      border-top: 1px solid #f0f0f0;
     }
-    summary:hover { opacity: 0.6; }
+    details:last-of-type > summary { border-bottom: 1px solid #f0f0f0; }
+    details[open]:last-of-type > summary { border-bottom: none; }
     summary::-webkit-details-marker { display: none; }
 
     .sum-left { display: flex; align-items: baseline; gap: 10px; }
-    .sum-num {
-      font-size: 10px;
-      color: #ea580c;
-      background: #fff7ed;
-      font-variant-numeric: tabular-nums;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      padding: 1px 5px;
-      border-radius: 3px;
-    }
+    .sum-num { font-size: 10px; font-weight: 400; color: #bbb; letter-spacing: 0.02em; }
 
     summary::after {
       content: '+';
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 300;
-      color: #111;
-      transition: opacity 0.15s;
+      color: #bbb;
       line-height: 1;
     }
     details[open] > summary::after { content: '−'; }
 
-    .acc-body { padding: 0 0 14px; }
+    .acc-body { padding: 4px 0 20px; }
 
     /* ── ITEMS (education, work, publications) ── */
-    .item { padding: 8px 0; }
+    .item { padding: 11px 0; }
+    .item + .item { border-top: 1px solid #f8f8f8; }
 
     .item-head {
       display: flex;
@@ -101,42 +92,41 @@
       gap: 0 8px;
       margin-bottom: 4px;
     }
-    .item-name { font-weight: 500; color: #111; }
-    .item-role { color: #333; }
-    .item-date {
-      color: #ea580c;
-      background: #fff7ed;
-      margin-left: auto;
-      white-space: nowrap;
-      padding: 1px 5px;
-      border-radius: 3px;
-      font-size: 11px;
-      font-variant-numeric: tabular-nums;
-    }
-    .item-desc { color: #333; margin-bottom: 6px; line-height: 1.7; font-size: 12px; }
-    .item-links { display: flex; gap: 12px; }
+    .item-name { font-weight: 600; }
+    .item-role { font-weight: 400; font-size: 12.5px; }
+    .item-date { margin-left: auto; font-size: 11px; color: #999; white-space: nowrap; padding-left: 8px; }
+    .item-desc { font-size: 12px; line-height: 1.7; margin-bottom: 7px; color: #444; }
+    .item-links { display: flex; gap: 12px; font-size: 12px; }
 
-    /* ── PROJECTS ── flat list */
-    .proj-row { padding: 8px 0; }
+    /* ── PROJECTS ── */
+    .proj-row { padding: 14px 0; }
+    .proj-row + .proj-row { border-top: 1px solid #f8f8f8; }
+
     .proj-row-head {
       display: flex;
       align-items: baseline;
       flex-wrap: wrap;
-      gap: 0 6px;
-      margin-bottom: 4px;
+      gap: 4px 8px;
+      margin-bottom: 5px;
     }
-    .proj-name { font-weight: 500; color: #111; }
-    .proj-sep { display: none; }
-    .proj-venue {
-      color: #ea580c;
-      background: #fff7ed;
-      font-size: 11px;
-      padding: 1px 5px;
-      border-radius: 3px;
+    .proj-name { font-weight: 600; }
+    .proj-venue { font-size: 11px; color: #999; }
+
+    .proj-desc { font-size: 12px; line-height: 1.7; color: #444; margin-bottom: 10px; }
+
+    .proj-links { display: flex; gap: 6px; flex-wrap: wrap; }
+    .proj-links a {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: #111;
+      text-decoration: none;
+      border: 1.5px solid #111;
+      padding: 3px 11px;
+      border-radius: 99px;
+      transition: background 0.12s, color 0.12s;
     }
-    .proj-desc { color: #333; font-size: 12px; line-height: 1.7; margin-bottom: 5px; }
-    .proj-links { display: flex; gap: 12px; }
-    .proj-links a::after { content: ' →'; }
+    .proj-links a:hover { background: #111; color: #fff; text-decoration: none; }
 
     /* ── AWARDS ── */
     .award-row {
@@ -144,11 +134,12 @@
       justify-content: space-between;
       align-items: baseline;
       gap: 16px;
-      padding: 8px 0;
+      padding: 9px 0;
     }
-    .award-name { color: #111; }
-    .award-meta { color: #333; }
-    .award-proof { white-space: nowrap; flex-shrink: 0; font-size: 11px; }
+    .award-row + .award-row { border-top: 1px solid #f8f8f8; }
+    .award-name { font-weight: 500; }
+    .award-meta { font-size: 12px; color: #666; }
+    .award-proof { white-space: nowrap; flex-shrink: 0; font-size: 11.5px; }
   </style>
 </head>
 <body>
@@ -202,7 +193,7 @@
           <span class="item-role">ML Engineer</span>
           <span class="item-date">Jun 2025 – Present</span>
         </div>
-        <div class="item-desc">Building a custom neural network pipeline to discover novel bioactive peptide ligands within the human secretome. Sole high schooler on a 7-person cross-university team.</div>
+        <div class="item-desc">Building a neural network pipeline to discover novel bioactive peptide ligands within the human secretome. Sole high schooler on a 7-person cross-university team.</div>
         <div class="item-links"><a href="https://github.com/26dishag/ChimeraPeptideView" target="_blank" rel="noopener">GitHub →</a></div>
       </div>
 
@@ -212,7 +203,7 @@
           <span class="item-role">Founder, 501(c)(3)</span>
           <span class="item-date">Aug 2021 – Present</span>
         </div>
-        <div class="item-desc">Built a genetic screening tool and evidence-based recovery programs reaching 400,000+ users across four countries, developed with oncologists and lymphedema therapists.</div>
+        <div class="item-desc">Genetic screening tool and evidence-based recovery programs reaching 400,000+ users across four countries, built with oncologists and lymphedema therapists.</div>
         <div class="item-links">
           <a href="https://womens-health.ai" target="_blank" rel="noopener">womens-health.ai →</a>
           <a href="https://www.womens-health.ai/dishagupta" target="_blank" rel="noopener">Profile →</a>
@@ -225,7 +216,7 @@
           <span class="item-role">ML Intern</span>
           <span class="item-date">Jun 2025</span>
         </div>
-        <div class="item-desc">Developed a custom architecture to diagnose pneumonia from low-resolution chest X-rays. Invited back for an extended project after the internship.</div>
+        <div class="item-desc">Built a custom architecture to diagnose pneumonia from low-resolution chest X-rays. Invited back for an extended project after the internship.</div>
         <div class="item-links"><a href="https://aimi.stanford.edu" target="_blank" rel="noopener">Stanford AIMI →</a></div>
       </div>
 
@@ -235,7 +226,7 @@
           <span class="item-role">ML Intern</span>
           <span class="item-date">Jun – Sep 2024</span>
         </div>
-        <div class="item-desc">Fine-tuned LLMs to reduce hallucinations in multi-step API chaining workflows. Launched a monthly product newsletter reaching 13,000+ users.</div>
+        <div class="item-desc">Fine-tuned LLMs to reduce hallucinations in multi-step API chaining. Launched a product newsletter reaching 13,000+ users.</div>
         <div class="item-links"><a href="https://devrev.ai" target="_blank" rel="noopener">devrev.ai →</a></div>
       </div>
 
@@ -245,14 +236,14 @@
           <span class="item-role">Software Engineer</span>
           <span class="item-date">Summer 2022</span>
         </div>
-        <div class="item-desc">Built a GAN and U-Net pipeline converting CT scans to MRI equivalents to improve diagnostic access in resource-limited settings.</div>
+        <div class="item-desc">GAN + U-Net pipeline converting CT scans to MRI equivalents to improve diagnostic access in resource-limited settings.</div>
       </div>
 
     </div>
   </details>
 
   <!-- PROJECTS -->
-  <details>
+  <details open>
     <summary>
       <span class="sum-left"><span class="sum-num">03</span> projects</span>
     </summary>
@@ -261,10 +252,9 @@
       <div class="proj-row">
         <div class="proj-row-head">
           <span class="proj-name">CancerDetect</span>
-          <span class="proj-sep">·</span>
-          <span class="proj-venue">published in IEEE · invited as session chair · 1st at Harvard Research Competition</span>
+          <span class="proj-venue">IEEE · Harvard #1 · session chair</span>
         </div>
-        <div class="proj-desc">GANs + Stable Diffusion + ResNet50/XGBoost for breast cancer ultrasound diagnosis. 95% accuracy, exceeding radiologists. Running a clinical pilot at C.K. Birla Hospital, Delhi.</div>
+        <div class="proj-desc">GANs + Stable Diffusion + ResNet50/XGBoost for breast cancer ultrasound diagnosis. 95% accuracy, exceeding radiologists. Clinical pilot running at C.K. Birla Hospital, Delhi.</div>
         <div class="proj-links">
           <a href="https://github.com/26dishag/Breast-Cancer" target="_blank" rel="noopener">GitHub</a>
           <a href="https://ieeexplore.ieee.org/document/11050648/" target="_blank" rel="noopener">Paper</a>
@@ -274,8 +264,7 @@
       <div class="proj-row">
         <div class="proj-row-head">
           <span class="proj-name">GliSM</span>
-          <span class="proj-sep">·</span>
-          <span class="proj-venue">published in SPIE · Synopsys Grand Prize</span>
+          <span class="proj-venue">SPIE · Synopsys Grand Prize</span>
         </div>
         <div class="proj-desc">Deep learning to identify GLS-1 inhibitors for aggressive cancers. Screened 10M compounds via ChemBERTa + PubChem10M, validated with AutoDockVina 3D docking.</div>
         <div class="proj-links">
@@ -286,11 +275,34 @@
 
       <div class="proj-row">
         <div class="proj-row-head">
-          <span class="proj-name">PhenoSynth</span>
-          <span class="proj-sep">·</span>
-          <span class="proj-venue">Rare Disease AI</span>
+          <span class="proj-name">Cozique</span>
+          <span class="proj-venue">AI matching app</span>
         </div>
-        <div class="proj-desc">Graph-based AI for rare disease diagnosis over the Human Phenotype Ontology (17,000+ phenotypes). Generates synthetic profiles for ultra-rare conditions.</div>
+        <div class="proj-desc">Curated small-group experiences with AI matching via Groq Llama 3.3. Application-based booking, mutual ratings, trust-tiered access. Next.js + Stripe.</div>
+        <div class="proj-links">
+          <a href="https://experience-app-sable.vercel.app" target="_blank" rel="noopener">Live</a>
+          <a href="https://github.com/26dishag/ExperienceApp" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="proj-row">
+        <div class="proj-row-head">
+          <span class="proj-name">Aurelia</span>
+          <span class="proj-venue">meal planning agent</span>
+        </div>
+        <div class="proj-desc">LLM agent for personalized meal planning. Manages dietary preferences, generates plans via Spoonacular, integrates with DoorDash and Instacart. Next.js + Convex.</div>
+        <div class="proj-links">
+          <a href="https://aurelia-a4wd-e4jr7fmbk-nl-ab-bd2a0883.vercel.app/" target="_blank" rel="noopener">Live</a>
+          <a href="https://github.com/roshanamurthur/aurelia" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="proj-row">
+        <div class="proj-row-head">
+          <span class="proj-name">PhenoSynth</span>
+          <span class="proj-venue">rare disease AI</span>
+        </div>
+        <div class="proj-desc">Graph-based AI for rare disease diagnosis over the Human Phenotype Ontology (17,000+ phenotypes). Generates synthetic patient profiles for ultra-rare conditions.</div>
         <div class="proj-links">
           <a href="https://github.com/26dishag/PhenoSynth" target="_blank" rel="noopener">GitHub</a>
         </div>
@@ -299,28 +311,14 @@
       <div class="proj-row">
         <div class="proj-row-head">
           <span class="proj-name">NeuroLimb</span>
-          <span class="proj-sep">·</span>
-          <span class="proj-venue">1st at UC Berkeley BioEngineering Competition</span>
+          <span class="proj-venue">Berkeley BioEngineering #1</span>
         </div>
         <div class="proj-desc">$350 3D-printed neuroprosthetic arm with 14 degrees of freedom, controlled via EEG-based neural decoding in real time.</div>
       </div>
 
       <div class="proj-row">
         <div class="proj-row-head">
-          <span class="proj-name">INDAccelerator</span>
-          <span class="proj-sep">·</span>
-          <span class="proj-venue">Drug Dev Automation</span>
-        </div>
-        <div class="proj-desc">AI-powered IND application document automation with intelligent scheduling, reducing overhead in the clinical drug development pipeline.</div>
-        <div class="proj-links">
-          <a href="https://github.com/26dishag/INDAccelerator" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
-
-      <div class="proj-row">
-        <div class="proj-row-head">
           <span class="proj-name">LitSearch</span>
-          <span class="proj-sep">·</span>
           <span class="proj-venue">Stanford Butcher Lab</span>
         </div>
         <div class="proj-desc">Receptor-ligand literature search combining tiered PubMed evidence with Open Targets disease genetics and UniProt synonym expansion.</div>
@@ -332,10 +330,9 @@
       <div class="proj-row">
         <div class="proj-row-head">
           <span class="proj-name">ChimeraPeptideView</span>
-          <span class="proj-sep">·</span>
           <span class="proj-venue">Stanford Butcher Lab</span>
         </div>
-        <div class="proj-desc">Visualize any gene and its predicted peptide ligands with binding metrics. Core visualization for the Butcher Lab discovery pipeline.</div>
+        <div class="proj-desc">Visualize any gene and its predicted peptide ligands with binding metrics. Core visualization tool for the Butcher Lab discovery pipeline.</div>
         <div class="proj-links">
           <a href="https://github.com/26dishag/ChimeraPeptideView" target="_blank" rel="noopener">GitHub</a>
         </div>
@@ -344,7 +341,6 @@
       <div class="proj-row">
         <div class="proj-row-head">
           <span class="proj-name">NeuroSpectrum</span>
-          <span class="proj-sep">·</span>
           <span class="proj-venue">Thermo Fisher Top 300 of 65,000</span>
         </div>
         <div class="proj-desc">Multimodal AI for early ASD detection using fMRI and phenotypic data, targeting critical developmental windows for earlier intervention.</div>
@@ -352,27 +348,12 @@
 
       <div class="proj-row">
         <div class="proj-row-head">
-          <span class="proj-name">Aurelia</span>
-          <span class="proj-sep">·</span>
-          <span class="proj-venue">Meal Planning Agent</span>
+          <span class="proj-name">INDAccelerator</span>
+          <span class="proj-venue">drug development automation</span>
         </div>
-        <div class="proj-desc">LLM orchestration agent for personalized meal planning. Manages dietary preferences, generates meal plans via Spoonacular, and integrates with DoorDash and Instacart for ordering. Built with Next.js and Convex.</div>
+        <div class="proj-desc">AI-powered IND application document automation with intelligent scheduling, reducing overhead in the clinical drug development pipeline.</div>
         <div class="proj-links">
-          <a href="https://aurelia-a4wd-e4jr7fmbk-nl-ab-bd2a0883.vercel.app/" target="_blank" rel="noopener">Live →</a>
-          <a href="https://github.com/roshanamurthur/aurelia" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
-
-      <div class="proj-row">
-        <div class="proj-row-head">
-          <span class="proj-name">Cozique</span>
-          <span class="proj-sep">·</span>
-          <span class="proj-venue">AI Matching App</span>
-        </div>
-        <div class="proj-desc">Curated small-group experiences with AI matching via Groq Llama 3.3. Application-based booking, mutual ratings, trust-tiered access. Next.js + Stripe.</div>
-        <div class="proj-links">
-          <a href="https://experience-app-sable.vercel.app" target="_blank" rel="noopener">Live →</a>
-          <a href="https://github.com/26dishag/ExperienceApp" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/26dishag/INDAccelerator" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
 
@@ -415,7 +396,7 @@
       <div class="award-row">
         <div>
           <span class="award-name">RISE Global Fellow</span>
-          <span class="award-meta"> &middot; Schmidt Futures & Rhodes Trust &middot; 2024</span>
+          <span class="award-meta"> · Schmidt Futures & Rhodes Trust · 2024</span>
         </div>
         <a class="award-proof" href="https://www.risefortheworld.org/winners/disha-gupta/" target="_blank" rel="noopener">proof →</a>
       </div>
@@ -423,14 +404,14 @@
       <div class="award-row">
         <div>
           <span class="award-name">UC Berkeley BioEngineering Competition</span>
-          <span class="award-meta"> &middot; #1 &middot; BioEHSC &middot; 2025</span>
+          <span class="award-meta"> · #1 · BioEHSC · 2025</span>
         </div>
       </div>
 
       <div class="award-row">
         <div>
           <span class="award-name">Harvard Undergraduate Research Journal</span>
-          <span class="award-meta"> &middot; #1 &middot; THURJ &middot; 2024</span>
+          <span class="award-meta"> · #1 · THURJ · 2024</span>
         </div>
         <a class="award-proof" href="https://news.harker.org/harker-takes-three-of-five-top-spots-in-harvard-research-competition/" target="_blank" rel="noopener">proof →</a>
       </div>
@@ -438,7 +419,7 @@
       <div class="award-row">
         <div>
           <span class="award-name">Computational Biology, Silicon Valley Synopsys</span>
-          <span class="award-meta"> &middot; #1 &middot; 2025</span>
+          <span class="award-meta"> · #1 · 2025</span>
         </div>
         <a class="award-proof" href="https://news.harker.org/nearly-70-students-win-awards-at-2025-synopsys-championship/" target="_blank" rel="noopener">proof →</a>
       </div>
@@ -446,14 +427,14 @@
       <div class="award-row">
         <div>
           <span class="award-name">Cal HOSA Medical Law and Ethics</span>
-          <span class="award-meta"> &middot; #1 &middot; 2024 & 2025</span>
+          <span class="award-meta"> · #1 · 2024 & 2025</span>
         </div>
       </div>
 
       <div class="award-row">
         <div>
           <span class="award-name">UCLA Brain Research Institute Award</span>
-          <span class="award-meta"> &middot; #1 &middot; CSEF &middot; 2022</span>
+          <span class="award-meta"> · #1 · CSEF · 2022</span>
         </div>
         <a class="award-proof" href="https://bri.ucla.edu/outreach/state-and-county-science-fairs/" target="_blank" rel="noopener">proof →</a>
       </div>
@@ -461,7 +442,7 @@
       <div class="award-row">
         <div>
           <span class="award-name">Thermo Fisher Junior Innovators Challenge</span>
-          <span class="award-meta"> &middot; Top 300 of 65,000 &middot; 2022</span>
+          <span class="award-meta"> · Top 300 of 65,000 · 2022</span>
         </div>
         <a class="award-proof" href="https://news.harker.org/eight-students-named-broadcom-masters-top-300-scholars/" target="_blank" rel="noopener">proof →</a>
       </div>
