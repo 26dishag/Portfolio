@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Disha Gupta</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -13,10 +13,10 @@
       font-family: 'Inter', -apple-system, sans-serif;
       font-size: 13px;
       line-height: 1.55;
-      color: #1a1a1a;
+      color: #111;
       background: #fff;
       max-width: 540px;
-      margin: 80px auto;
+      margin: 120px auto;
       padding: 0 28px 120px;
       -webkit-font-smoothing: antialiased;
     }
@@ -29,7 +29,7 @@
       display: flex;
       align-items: flex-start;
       gap: 24px;
-      margin-bottom: 44px;
+      margin-bottom: 52px;
     }
     .photo {
       width: 82px; height: 82px;
@@ -37,21 +37,22 @@
       object-fit: cover; object-position: center top;
       flex-shrink: 0;
     }
-    .name { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+    .name { font-size: 16px; font-weight: 600; letter-spacing: -0.03em; margin-bottom: 6px; }
     .bio { color: #555; margin-bottom: 10px; }
     .header-links { display: flex; gap: 12px; }
-    .header-links a { font-size: 12px; }
 
     /* ── ACCORDION ── */
-    details { border-top: 1px solid #ebebeb; }
-    details:last-of-type { border-bottom: 1px solid #ebebeb; }
+    details { margin-bottom: 22px; }
 
     summary {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 11px 0;
-      font-weight: 500;
+      padding: 0 0 10px 0;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #111;
       cursor: pointer;
       list-style: none;
       user-select: none;
@@ -59,24 +60,25 @@
     summary::-webkit-details-marker { display: none; }
     summary::after {
       content: '›';
-      font-size: 16px;
+      font-size: 15px;
       color: #bbb;
       display: inline-block;
       transition: transform 0.15s;
       line-height: 1;
+      letter-spacing: 0;
     }
     details[open] > summary::after { transform: rotate(90deg); }
 
-    .acc-body { padding: 2px 0 14px; }
+    .acc-body { padding: 0 0 4px; }
 
-    /* each item — arrow bullet, no separator lines */
+    /* each item */
     .item {
       display: grid;
       grid-template-columns: 14px 1fr;
       gap: 0 8px;
-      padding: 6px 0;
+      padding: 7px 0;
     }
-    .item-arrow { color: #ccc; padding-top: 1px; font-size: 12px; }
+    .item-arrow { color: #ddd; padding-top: 2px; }
     .item-content { }
 
     .item-head {
@@ -84,28 +86,29 @@
       flex-wrap: wrap;
       align-items: baseline;
       gap: 0 6px;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
-    .item-name { font-weight: 500; }
-    .item-role { color: #777; }
-    .item-date { color: #aaa; font-size: 12px; margin-left: auto; white-space: nowrap; padding-left: 8px; }
-    .item-desc { color: #555; margin-bottom: 4px; }
-    .item-links { display: flex; gap: 10px; font-size: 12px; }
+    .item-name { font-weight: 600; letter-spacing: -0.01em; }
+    .item-role { color: #888; }
+    .item-date { color: #bbb; margin-left: auto; white-space: nowrap; padding-left: 8px; }
+    .item-desc { color: #666; margin-bottom: 5px; line-height: 1.6; }
+    .item-links { display: flex; gap: 10px; }
 
     /* ── PROJECT GRID ── */
     .proj-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      padding: 4px 0 2px;
+      gap: 6px;
+      padding: 0;
     }
     .proj-card {
-      border: 1px solid #ebebeb;
-      border-radius: 6px;
-      padding: 12px 13px;
-      transition: border-color 0.15s;
+      background: none;
+      border-left: 1.5px solid #e8e8e8;
+      border-radius: 0;
+      padding: 9px 0 9px 14px;
+      transition: transform 0.12s, border-color 0.12s;
     }
-    .proj-card:hover { border-color: #bbb; }
+    .proj-card:hover { transform: translateX(4px); border-color: #111; }
     .proj-card-head {
       display: flex;
       justify-content: space-between;
@@ -113,29 +116,29 @@
       gap: 6px;
       margin-bottom: 3px;
     }
-    .proj-card-name { font-weight: 500; font-size: 12.5px; }
+    .proj-card-name { font-weight: 600; letter-spacing: -0.01em; }
     .proj-card-lang {
       display: flex; align-items: center; gap: 4px;
-      font-size: 11px; color: #aaa; flex-shrink: 0;
+      color: #bbb; flex-shrink: 0;
     }
     .proj-dot { width: 7px; height: 7px; border-radius: 50%; }
-    .proj-card-venue { font-size: 11.5px; color: #999; margin-bottom: 5px; }
-    .proj-card-desc { font-size: 12px; color: #555; line-height: 1.5; margin-bottom: 8px; }
-    .proj-card-links { display: flex; gap: 10px; font-size: 11.5px; }
+    .proj-card-venue { color: #aaa; margin-bottom: 5px; }
+    .proj-card-desc { color: #666; line-height: 1.5; margin-bottom: 9px; }
+    .proj-card-links { display: flex; gap: 10px; }
 
     /* ── AWARDS ── */
     .award-item {
       display: grid;
       grid-template-columns: 14px 1fr;
       gap: 0 8px;
-      padding: 6px 0;
+      padding: 7px 0;
     }
-    .award-rank { font-weight: 500; font-size: 12px; color: #aaa; padding-top: 1px; }
+    .award-rank { font-weight: 500; color: #ccc; padding-top: 1px; }
     .award-body { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
     .award-text { }
-    .award-name { font-size: 12.5px; color: #1a1a1a; }
-    .award-meta { font-size: 11.5px; color: #999; }
-    .award-proof { font-size: 11.5px; white-space: nowrap; flex-shrink: 0; }
+    .award-name { color: #111; }
+    .award-meta { color: #aaa; }
+    .award-proof { white-space: nowrap; flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -164,7 +167,6 @@
             <span class="item-role">BS, Computer Science</span>
             <span class="item-date">2026 – 2030</span>
           </div>
-          <div class="item-desc">Studying computer science at Caltech.</div>
         </div>
       </div>
 
@@ -223,6 +225,7 @@
             <span class="item-date">Jun 2025</span>
           </div>
           <div class="item-desc">Developed a custom architecture to diagnose pneumonia from low-resolution chest X-rays. Invited back for an extended project after the internship.</div>
+          <div class="item-links"><a href="https://aimi.stanford.edu" target="_blank" rel="noopener">Stanford AIMI →</a></div>
         </div>
       </div>
 
@@ -235,6 +238,7 @@
             <span class="item-date">Jun – Sep 2024</span>
           </div>
           <div class="item-desc">Fine-tuned LLMs to reduce hallucinations in multi-step API chaining workflows. Launched a monthly product newsletter reaching 13,000+ users.</div>
+          <div class="item-links"><a href="https://devrev.ai" target="_blank" rel="noopener">devrev.ai →</a></div>
         </div>
       </div>
 
@@ -346,6 +350,19 @@
           </div>
           <div class="proj-card-venue">Thermo Fisher Top 300</div>
           <div class="proj-card-desc">Multimodal AI for early ASD detection using fMRI and phenotypic data, targeting critical developmental windows for earlier intervention.</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-card-head">
+            <span class="proj-card-name">Aurelia</span>
+            <span class="proj-card-lang"><span class="proj-dot" style="background:#3178c6"></span>TypeScript</span>
+          </div>
+          <div class="proj-card-venue">Meal Planning Agent</div>
+          <div class="proj-card-desc">LLM orchestration agent for personalized meal planning. Manages dietary preferences, generates meal plans via Spoonacular, and integrates with DoorDash and Instacart for ordering. Built with Next.js and Convex.</div>
+          <div class="proj-card-links">
+            <a href="https://aurelia-a4wd-e4jr7fmbk-nl-ab-bd2a0883.vercel.app/" target="_blank" rel="noopener">Live →</a>
+            <a href="https://github.com/roshanamurthur/aurelia" target="_blank" rel="noopener">GitHub</a>
+          </div>
         </div>
 
         <div class="proj-card">
